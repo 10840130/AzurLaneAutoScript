@@ -2815,7 +2815,7 @@
   },
   "OpsiScheduling": {
     "_info": {
-      "name": "智能调度设置",
+      "name": "智能调度Beta",
       "help": "侵蚀1与短猫相接之间的智能调度功能\n启用后将根据黄币和行动力自动切换任务并发送推送通知"
     },
     "EnableSmartScheduling": {
