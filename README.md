@@ -1,7 +1,7 @@
 **| [English](README_en.md) | 简体中文 | [日本語](README_jp.md) |**
 
 # AzurLaneAutoScript
-
+我们屁眼通红真的太有实力了
 ## 添加了
 
 1. 智能调度
