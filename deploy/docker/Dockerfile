@@ -1,13 +1,10 @@
-# docker build -t hgjazhgj/alas:latest .
-# docker run -v ${PWD}:/app/AzurLaneAutoScript -p 22267:22267 --name alas -it --rm hgjazhgj/alas
-
 FROM python:3.7-bullseye
 
 WORKDIR /app/AzurLaneAutoScript
 
+# 先处理依赖（利用缓存）
 COPY requirements.txt /tmp/requirements.txt
 
-# Initial download of UiAutomator2 is slow outside of China using appetizer mirror, switch to GitHub
 RUN apt update \
     && apt install -y git adb libgomp1 openssh-client pkg-config libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libswresample-dev libavfilter-dev \
     && git config --global --add safe.directory '*' \
@@ -18,4 +15,9 @@ RUN apt update \
     && rm /tmp/requirements.txt \
     && rm -r ~/.cache/pip
 
-CMD python gui.py
+# --- 关键修改：把当前目录下的所有代码拷贝进去 ---
+COPY . . 
+# -------------------------------------------
+
+# 建议在 CMD 中加上参数，确保 Web 界面能被外部访问
+CMD ["python", "gui.py", "--host", "0.0.0.0", "--port", "22267"]
