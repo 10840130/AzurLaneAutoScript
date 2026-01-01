@@ -151,7 +151,7 @@ __all__ = ["get_opsi_stats", "OpsiMonthStats", "compute_monthly_cl1_akashi_ap"]
 
 
 
-def compute_monthly_cl1_akashi_ap(year: int | None = None, month: int | None = None, campaign: str = "opsi_akashi", instance_name: str | None = None) -> int:
+def compute_monthly_cl1_akashi_ap(year: int | None = None, month: int | None = None, campaign: str = "opsi_akashi", instance_name: str | None = None, include_non_cl1: bool = True) -> int:
     """
     计算指定月份从明石商店购买的行动力总额
     
@@ -160,6 +160,7 @@ def compute_monthly_cl1_akashi_ap(year: int | None = None, month: int | None = N
         month: 月份 (默认当前月份)
         campaign: 活动名称 (未使用)
         instance_name: Alas实例名称
+        include_non_cl1: 是否包含非CL1任务中购买的体力 (默认True)
     
     Returns:
         int: 购买的行动力总额
@@ -186,25 +187,32 @@ def compute_monthly_cl1_akashi_ap(year: int | None = None, month: int | None = N
             except Exception:
                 data = {}
 
-            # 优先读取汇总值
-            ap_key = f"{key_prefix}-akashi-ap"
-            if ap_key in data:
-                try:
-                    return int(data.get(ap_key, 0))
-                except Exception:
-                    return 0
-
-            # 从详细条目中计算
+            # 从详细条目中计算（支持按来源过滤）
             entries_key = f"{key_prefix}-akashi-ap-entries"
             entries = data.get(entries_key)
             if isinstance(entries, list) and entries:
                 total = 0
                 for e in entries:
                     try:
-                        total += int(e.get("amount", 0)) if isinstance(e, dict) else int(e)
+                        if isinstance(e, dict):
+                            source = e.get("source", "akashi")
+                            # 如果不包含非CL1来源，则只统计cl1_akashi
+                            if not include_non_cl1 and source != "cl1_akashi":
+                                continue
+                            total += int(e.get("amount", 0))
+                        else:
+                            total += int(e)
                     except Exception:
                         continue
                 return int(total)
+            
+            # 兼容旧格式：直接读取汇总值（无法区分来源）
+            ap_key = f"{key_prefix}-akashi-ap"
+            if ap_key in data:
+                try:
+                    return int(data.get(ap_key, 0))
+                except Exception:
+                    return 0
     except Exception:
         pass
 
