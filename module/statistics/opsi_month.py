@@ -18,9 +18,26 @@ class OpsiMonthStats:
                 self._path = project_root / "log" / "cl1" / instance_name / "cl1_monthly.json"
             else:
                 self._path = project_root / "log" / "cl1" / "default" / "cl1_monthly.json"
+            # 自动删除旧的全局数据文件
+            self._cleanup_legacy_data(project_root / "log" / "cl1")
         else:
             self._path = Path(path)
         self._instance_name = instance_name or "default"
+    
+    @staticmethod
+    def _cleanup_legacy_data(cl1_dir: Path) -> None:
+        """删除旧的全局数据文件 (不在实例子目录中的文件)"""
+        try:
+            old_monthly = cl1_dir / "cl1_monthly.json"
+            old_ship_exp = cl1_dir / "ship_exp_data.json"
+            if old_monthly.exists() and old_monthly.is_file():
+                old_monthly.unlink()
+                logger.info(f"Deleted legacy global data file: {old_monthly}")
+            if old_ship_exp.exists() and old_ship_exp.is_file():
+                old_ship_exp.unlink()
+                logger.info(f"Deleted legacy global data file: {old_ship_exp}")
+        except Exception as e:
+            logger.warning(f"Failed to cleanup legacy data: {e}")
 
     def _load_raw(self) -> Dict[str, Any]:
         if not self._path.exists():
