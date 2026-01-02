@@ -823,12 +823,18 @@ class OperationSiren(OSMap):
             from module.statistics.ship_exp_stats import save_ship_exp_data
             from module.statistics.opsi_month import get_opsi_stats
             
-            current_battles = get_opsi_stats().summary().get('total_battles', 0)
+            # 获取当前实例名称
+            instance_name = self.config.config_name if hasattr(self.config, 'config_name') else None
+            
+            # 使用实例名获取战绩，确保战斗场次正确
+            current_battles = get_opsi_stats(instance_name=instance_name).summary().get('total_battles', 0)
+            
             save_ship_exp_data(
                 ships=ship_data_list,
                 target_level=target_level,
                 fleet_index=self.config.OpsiFleet_Fleet,
-                battle_count_at_check=current_battles
+                battle_count_at_check=current_battles,
+                instance_name=instance_name  # 指定实例名称保存数据
             )
         except Exception as e:
             logger.warning(f'Failed to save ship exp data: {e}')
