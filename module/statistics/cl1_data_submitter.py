@@ -150,9 +150,12 @@ class Cl1DataSubmitter:
         # 净赚体力 = 从明石获得的总行动力
         net_stamina_gain = akashi_ap
         
+        # 生成匿名 instance_id（使用 device_id + instance_name 的哈希值）
+        instance_hash = hashlib.md5(f"{self.device_id}_{self._instance_name}".encode()).hexdigest()[:16]
+        
         return {
             'device_id': self.device_id,
-            'instance_id': self._instance_name,
+            'instance_id': instance_hash,
             'month': raw_data['month'],
             'battle_count': battle_count,
             'battle_rounds': battle_rounds,
