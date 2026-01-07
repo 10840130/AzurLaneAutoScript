@@ -34,7 +34,7 @@ class Cl1DataSubmitter:
         self.endpoint = endpoint
         self._device_id: Optional[str] = None
         self._last_submit_time: float = 0
-        self._submit_interval: int = 3600  # 1小时
+        self._submit_interval: int = 600  # 10分钟
         
         # 获取项目根目录
         self.project_root = Path(__file__).resolve().parents[2]
