@@ -262,6 +262,7 @@ class AzurLaneAutoScript:
     def restart(self):
         from module.handler.login import LoginHandler
         LoginHandler(self.config, device=self.device).app_restart()
+        self.config.task_delay(server_update=True)
 
     def start(self):
         from module.handler.login import LoginHandler
