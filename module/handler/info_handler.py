@@ -419,9 +419,9 @@ class InfoHandler(ModuleBase):
                             from module.os_handler.assets import SIREN_OPTION_A, SIREN_OPTION_B, SIREN_OPTION_C
                             
                             # 使用模板匹配检测3个选项
-                            match_a = self.appear(SIREN_OPTION_A, offset=(20, 20), similarity=0.85)
-                            match_b = self.appear(SIREN_OPTION_B, offset=(20, 20), similarity=0.85)
-                            match_c = self.appear(SIREN_OPTION_C, offset=(20, 20), similarity=0.85)
+                            match_a = SIREN_OPTION_A.match(self.device.image, similarity=0.85)
+                            match_b = SIREN_OPTION_B.match(self.device.image, similarity=0.85)
+                            match_c = SIREN_OPTION_C.match(self.device.image, similarity=0.85)
                             
                             # 至少2个选项匹配就认为是塞壬研究装置(容错)
                             matches = sum([1 for m in [match_a, match_b, match_c] if m])
