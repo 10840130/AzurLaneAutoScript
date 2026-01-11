@@ -798,6 +798,11 @@ class OperationSiren(OSMap):
             yellow_coins = self.get_yellow_coins()
             if self.config.OpsiScheduling_EnableSmartScheduling:
                 # 启用了智能调度
+                if not self.config.is_task_enabled('OpsiMeowfficerFarming'):
+                    self.config.cross_set(keys='OpsiMeowfficerFarming.Scheduler.Enable', value=True)
+                    logger.info('【智能调度】未启用短猫相接任务，强制开启短猫相接')
+                # 我不能理解为什么在启用智能调度后必然会调用短猫但并没有在代码中强制开启
+
                 if yellow_coins < self.config.OpsiHazard1Leveling_OperationCoinsPreserve:
                     logger.info(f'【智能调度】黄币不足 ({yellow_coins} < {self.config.OpsiHazard1Leveling_OperationCoinsPreserve}), 需要执行短猫相接')
 
@@ -841,6 +846,11 @@ class OperationSiren(OSMap):
                         )
 
                         with self.config.multi_set():
+                            cd = self.nearest_task_cooling_down
+                            if cd is None:
+                                for task in ['OpsiAbyssal', 'OpsiStronghold', 'OpsiObscure']:
+                                    if self.config.is_task_enabled(task):
+                                        self.config.task_call(task)
                             self.config.task_call('OpsiMeowfficerFarming')
                         self.config.task_stop()
                     self.config.OpsiHazard1_PreviousCoinsApInsufficient = _previous_coins_ap_insufficient
@@ -850,6 +860,12 @@ class OperationSiren(OSMap):
                     logger.info(f'Reach the limit of yellow coins, preserve={self.config.OpsiHazard1Leveling_OperationCoinsPreserve}')
                     with self.config.multi_set():
                         self.config.task_delay(server_update=True)
+                        if not self.is_in_opsi_explore():
+                            cd = self.nearest_task_cooling_down
+                            if cd is None:
+                                for task in ['OpsiAbyssal', 'OpsiStronghold', 'OpsiObscure', 'OpsiMeowfficerFarming']:
+                                    if self.config.is_task_enabled(task):
+                                        self.config.task_call(task)
                     self.config.task_stop()
 
             # 获取当前区域
