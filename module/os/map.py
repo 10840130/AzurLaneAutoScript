@@ -6,6 +6,7 @@ from sys import maxsize
 
 import inflection
 
+from datetime import datetime
 from module.base.timer import Timer
 from module.config.config import TaskEnd
 from module.config.utils import get_os_reset_remain
@@ -1168,6 +1169,14 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
         Returns:
             int: Number of finished combat
         """
+        # Siren bug count sleep
+        # Only apply sleep when running OpsiHazard1Leveling (the task that uses the bug exploit)
+        if self.config.task.command == 'OpsiHazard1Leveling':
+            count = self.config.OpsiSirenBug_DailyCount
+            if count > 0:
+                logger.info(f'Siren bug usage count: {count}, sleep {count}s before auto search')
+                time.sleep(count)
+
         finished_combat = 0
         for _ in range(5):
             backup = self.config.temporary(Campaign_UseAutoSearch=True)
@@ -1956,6 +1965,13 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
             self.globe_goto(erosion_one_zone, types=('SAFE', 'DANGEROUS'), refresh=True)
             self.zone_init()
             logger.info('【塞壬Bug利用】返回侵蚀一区域完成')
+
+            # Increase bug count
+            self.config.OpsiSirenBug_DailyCount += 1
+            self.config.OpsiSirenBug_DailyCountRecord = datetime.now()
+            count = self.config.OpsiSirenBug_DailyCount
+            logger.info(f'Siren bug exploitation successful, daily count: {count}')
+
             self.run_auto_search(question=True, rescan='full', after_auto_search=True)
             
             # 发送成功通知
