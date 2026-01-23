@@ -4,6 +4,8 @@ Shared mixin for yellow coin supplement tasks (OpsiObscure, OpsiAbyssal, OpsiStr
 This mixin provides common functionality for tasks that can supplement yellow coins
 and need to check yellow coin thresholds to return to CL1.
 """
+from datetime import datetime, timedelta
+
 from module.logger import logger
 
 
@@ -213,6 +215,9 @@ class CoinTaskMixin:
         # Try tasks after current one
         for i in range(current_index + 1, len(self.ALL_COIN_TASKS)):
             task = self.ALL_COIN_TASKS[i]
+            # Skip current task to prevent re-enabling it
+            if task == current_task_name:
+                continue
             if self.config.is_task_enabled(task):
                 task_display = self.TASK_NAMES.get(task, task)
                 logger.info(f'尝试调用黄币补充任务: {task_display}')
@@ -222,6 +227,9 @@ class CoinTaskMixin:
         # If no tasks after current one, try tasks before (but skip self)
         for i in range(0, current_index):
             task = self.ALL_COIN_TASKS[i]
+            # Skip current task to prevent re-enabling it
+            if task == current_task_name:
+                continue
             if self.config.is_task_enabled(task):
                 task_display = self.TASK_NAMES.get(task, task)
                 logger.info(f'尝试调用黄币补充任务: {task_display}')
@@ -248,6 +256,23 @@ class CoinTaskMixin:
         """
         logger.info(f'{log_message}，禁用任务')
         
+        # Get the actual task name from config.task.command instead of class name
+        # This ensures we get the correct task name even if self is an OperationSiren instance
+        if hasattr(self.config, 'task') and hasattr(self.config.task, 'command'):
+            task_name = self.config.task.command
+        else:
+            # Fallback to class name, but try to find the actual task class
+            task_name = self.__class__.__name__
+            # If it's OperationSiren, try to find the actual task from method resolution order
+            if task_name == 'OperationSiren':
+                # Find the first coin task class in MRO
+                for cls in self.__class__.__mro__:
+                    if cls.__name__ in self.ALL_COIN_TASKS:
+                        task_name = cls.__name__
+                        break
+        
+        logger.info(f'禁用任务: {task_name}')
+        
         # Check if we should try other tasks (yellow coins insufficient)
         should_try_other = False
         if self.is_cl1_enabled and self.config.OpsiScheduling_EnableSmartScheduling:
@@ -260,13 +285,22 @@ class CoinTaskMixin:
                 should_try_other = True
                 logger.info(f'黄币不足 ({yellow_coins} < {cl1_preserve})，尝试其他黄币补充任务')
         
-        # Disable current task
-        task_name = self.__class__.__name__
+        # Disable current task and try other tasks if needed
+        # Use multi_set to ensure all changes are saved atomically
         with self.config.multi_set():
+            # Disable current task and delay its NextRun to prevent immediate re-selection
+            # Delay to a far future time (e.g., 30 days) to ensure it won't be selected soon
+            far_future = datetime.now() + timedelta(days=30)
             self.config.cross_set(keys=f'{task_name}.Scheduler.Enable', value=False)
+            self.config.cross_set(keys=f'{task_name}.Scheduler.NextRun', value=far_future)
+            
             if should_try_other:
+                # Try other tasks, but ensure current task stays disabled
                 self._try_other_coin_tasks(task_name)
-                return True
+                # Re-disable current task and delay NextRun again to ensure it stays disabled
+                self.config.cross_set(keys=f'{task_name}.Scheduler.Enable', value=False)
+                self.config.cross_set(keys=f'{task_name}.Scheduler.NextRun', value=far_future)
         
+        # Stop the current task
         self.config.task_stop()
         return True
