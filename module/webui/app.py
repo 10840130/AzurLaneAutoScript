@@ -12,7 +12,7 @@ import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from functools import partial
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 
 # Import fake module before import pywebio to avoid importing unnecessary module PIL
 from module.webui.fake_pil_module import import_fake_pil_module
@@ -1819,7 +1819,7 @@ class AlasGUI(Frame):
         )
 
         # Announcement check feature
-        # JavaScript function to show announcement modal (called from backend)
+        # JavaScript function to show announcement modal with iframe (called from backend)
         run_js(
             '''
         (function(){
@@ -1849,50 +1849,77 @@ class AlasGUI(Frame):
                 return shown.indexOf(announcementId) !== -1;
             };
 
-            window.alasShowAnnouncement = function(title, content, announcementId) {
-                if (window.alasHasBeenShown(announcementId) || document.getElementById('alas-announcement-modal')) {
+            // 新版：iframe 嵌入方式
+            window.alasShowAnnouncementV2 = function(id, url, title, priority) {
+                if (window.alasHasBeenShown(id) || document.getElementById('alas-announcement-modal')) {
                     return;
                 }
 
                 // Create modal overlay
                 var overlay = document.createElement('div');
                 overlay.id = 'alas-announcement-modal';
-                overlay.style.cssText = 'position:fixed;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);z-index:100000;display:flex;justify-content:center;align-items:center;';
+                overlay.style.cssText = 'position:fixed;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.6);z-index:100000;display:flex;justify-content:center;align-items:center;';
 
-                // Create modal content
+                // Create modal container
                 var modal = document.createElement('div');
-                modal.style.cssText = 'background:#fff;border-radius:12px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.3);';
+                var isImportant = priority === 'important';
+                modal.style.cssText = 'background:#fff;border-radius:12px;max-width:600px;width:90%;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 8px 32px rgba(0,0,0,0.3);overflow:hidden;' + (isImportant ? 'border:2px solid #e74c3c;' : '');
 
-                // Title
+                // Title bar
+                var titleBar = document.createElement('div');
+                titleBar.style.cssText = 'padding:16px 20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;';
+                
                 var titleEl = document.createElement('h3');
-                titleEl.textContent = title;
-                titleEl.style.cssText = 'margin:0 0 16px 0;font-size:1.25rem;color:#333;border-bottom:2px solid #4fc3f7;padding-bottom:8px;';
+                titleEl.textContent = '📢 ' + title;
+                titleEl.style.cssText = 'margin:0;font-size:1.1rem;color:#333;';
+                
+                var closeX = document.createElement('span');
+                closeX.textContent = '×';
+                closeX.style.cssText = 'font-size:1.5rem;cursor:pointer;color:#999;line-height:1;';
+                closeX.onmouseover = function(){ closeX.style.color = '#333'; };
+                closeX.onmouseout = function(){ closeX.style.color = '#999'; };
+                closeX.onclick = function(){
+                    window.alasMarkAnnouncementShown(id);
+                    overlay.remove();
+                };
+                
+                titleBar.appendChild(titleEl);
+                titleBar.appendChild(closeX);
 
-                // Content
-                var contentEl = document.createElement('div');
-                contentEl.textContent = content;
-                contentEl.style.cssText = 'font-size:1rem;color:#555;line-height:1.6;margin-bottom:20px;white-space:pre-wrap;';
+                // iframe container
+                var iframeContainer = document.createElement('div');
+                iframeContainer.style.cssText = 'flex:1;min-height:200px;overflow:hidden;';
+                
+                var iframe = document.createElement('iframe');
+                iframe.src = url;
+                iframe.style.cssText = 'width:100%;height:100%;border:none;min-height:300px;';
+                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+                iframeContainer.appendChild(iframe);
 
-                // Close button
+                // Footer with button
+                var footer = document.createElement('div');
+                footer.style.cssText = 'padding:16px 20px;border-top:1px solid #eee;text-align:center;flex-shrink:0;';
+                
                 var closeBtn = document.createElement('button');
-                closeBtn.textContent = '确认';
-                closeBtn.style.cssText = 'background:linear-gradient(90deg,#00b894,#0984e3);color:#fff;border:none;padding:10px 32px;border-radius:6px;cursor:pointer;font-size:1rem;display:block;margin:0 auto;';
+                closeBtn.textContent = '我知道了';
+                closeBtn.style.cssText = 'background:linear-gradient(90deg,#00b894,#0984e3);color:#fff;border:none;padding:10px 40px;border-radius:6px;cursor:pointer;font-size:1rem;';
                 closeBtn.onmouseover = function(){ closeBtn.style.opacity = '0.9'; };
                 closeBtn.onmouseout = function(){ closeBtn.style.opacity = '1'; };
                 closeBtn.onclick = function(){
-                    window.alasMarkAnnouncementShown(announcementId);
+                    window.alasMarkAnnouncementShown(id);
                     overlay.remove();
                 };
+                footer.appendChild(closeBtn);
 
-                modal.appendChild(titleEl);
-                modal.appendChild(contentEl);
-                modal.appendChild(closeBtn);
+                modal.appendChild(titleBar);
+                modal.appendChild(iframeContainer);
+                modal.appendChild(footer);
                 overlay.appendChild(modal);
 
                 // Close on overlay click
                 overlay.onclick = function(e){
                     if (e.target === overlay) {
-                        window.alasMarkAnnouncementShown(announcementId);
+                        window.alasMarkAnnouncementShown(id);
                         overlay.remove();
                     }
                 };
@@ -1906,9 +1933,45 @@ class AlasGUI(Frame):
                                  localStorage.getItem('Theme') === 'dark';
                     if (isDark) {
                         modal.style.background = '#2d3436';
+                        titleBar.style.borderColor = '#444';
                         titleEl.style.color = '#dfe6e9';
-                        contentEl.style.color = '#b2bec3';
+                        footer.style.borderColor = '#444';
                     }
+                } catch (e) {}
+            };
+
+            // 兼容旧版本（前端展示纯文本）
+            window.alasShowAnnouncement = function(title, content, announcementId) {
+                if (window.alasHasBeenShown(announcementId) || document.getElementById('alas-announcement-modal')) {
+                    return;
+                }
+                var overlay = document.createElement('div');
+                overlay.id = 'alas-announcement-modal';
+                overlay.style.cssText = 'position:fixed;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);z-index:100000;display:flex;justify-content:center;align-items:center;';
+                var modal = document.createElement('div');
+                modal.style.cssText = 'background:#fff;border-radius:12px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.3);';
+                var titleEl = document.createElement('h3');
+                titleEl.textContent = title;
+                titleEl.style.cssText = 'margin:0 0 16px 0;font-size:1.25rem;color:#333;border-bottom:2px solid #4fc3f7;padding-bottom:8px;';
+                var contentEl = document.createElement('div');
+                contentEl.textContent = content;
+                contentEl.style.cssText = 'font-size:1rem;color:#555;line-height:1.6;margin-bottom:20px;white-space:pre-wrap;';
+                var closeBtn = document.createElement('button');
+                closeBtn.textContent = '确认';
+                closeBtn.style.cssText = 'background:linear-gradient(90deg,#00b894,#0984e3);color:#fff;border:none;padding:10px 32px;border-radius:6px;cursor:pointer;font-size:1rem;display:block;margin:0 auto;';
+                closeBtn.onclick = function(){
+                    window.alasMarkAnnouncementShown(announcementId);
+                    overlay.remove();
+                };
+                modal.appendChild(titleEl);
+                modal.appendChild(contentEl);
+                modal.appendChild(closeBtn);
+                overlay.appendChild(modal);
+                overlay.onclick = function(e){ if (e.target === overlay) { window.alasMarkAnnouncementShown(announcementId); overlay.remove(); } };
+                document.body.appendChild(overlay);
+                try {
+                    var isDark = document.body.classList.contains('pywebio-dark') || localStorage.getItem('Theme') === 'dark';
+                    if (isDark) { modal.style.background = '#2d3436'; titleEl.style.color = '#dfe6e9'; contentEl.style.color = '#b2bec3'; }
                 } catch (e) {}
             };
         })();
@@ -2001,58 +2064,37 @@ class AlasGUI(Frame):
         self.task_handler.add(update_switch.g(), 1)
         self.task_handler.start()
 
-        # Announcement check function - fetches from API and pushes to frontend
-        self._last_announcement_id = None
-        self._announcement_queue = queue.Queue()
+        # 公告推送功能 - 使用全局 SSE 连接的回调机制
+        from module.base.api_client import announcement_manager
         
-        def _fetch_announcement_async():
-            """Background thread function to fetch announcement from API"""
+        def push_announcement_to_frontend(data: dict):
+            """接收到公告时推送到前端"""
             try:
-                from module.base.api_client import ApiClient
-                # 使用ApiClient的双域名故障转移机制
-                data = ApiClient.get_announcement(timeout=10)
-                if data:
-                    # Put the data in queue for main thread to process
-                    self._announcement_queue.put(data)
+                ann_id = data.get('id', '')
+                url = data.get('url', '')
+                title = data.get('title', '公告')
+                priority = data.get('priority', 'normal')
+                
+                if ann_id and url:
+                    # 使用新版 iframe 方式
+                    id_json = json.dumps(ann_id)
+                    url_json = json.dumps(url)
+                    title_json = json.dumps(title)
+                    priority_json = json.dumps(priority)
+                    run_js(f"window.alasShowAnnouncementV2({id_json}, {url_json}, {title_json}, {priority_json});")
+                elif ann_id:
+                    # 降级到旧版纯文本方式
+                    content = data.get('content', '')
+                    old_id = data.get('announcementId', ann_id)
+                    title_json = json.dumps(title)
+                    content_json = json.dumps(content)
+                    id_json = json.dumps(old_id)
+                    run_js(f"window.alasShowAnnouncement({title_json}, {content_json}, {id_json});")
             except Exception as e:
-                logger.debug(f"Announcement fetch failed: {e}")
-
+                logger.debug(f"Push announcement failed: {e}")
         
-        def check_and_push_announcement():
-            """Start async fetch and process any queued announcements"""
-            # Start a new fetch in background thread
-            thread = threading.Thread(target=_fetch_announcement_async, daemon=True)
-            thread.start()
-            
-            # Process any announcements that have been fetched
-            try:
-                while True:
-                    data = self._announcement_queue.get_nowait()
-                    announcement_id = data['announcementId']
-                    # Only push if ID is different from the last one or not pushed yet
-                    if announcement_id != self._last_announcement_id:
-                        title_json = json.dumps(data['title'])
-                        content_json = json.dumps(data['content'])
-                        announcement_id_json = json.dumps(announcement_id)
-                        run_js(f"window.alasShowAnnouncement({title_json}, {content_json}, {announcement_id_json});")
-                        self._last_announcement_id = announcement_id
-            except queue.Empty:
-                pass
-
-        # Periodic announcement check generator
-        def announcement_checker():
-            th = yield  # Initial yield to get task handler reference
-            # First check - happens after initial delay (5 seconds)
-            check_and_push_announcement()
-            # After first check, set delay to 30 seconds for subsequent checks
-            th._task.delay = 30
-            yield
-            while True:
-                check_and_push_announcement()
-                yield
-
-        # Add announcement checker task (initial delay 30 seconds)
-        self.task_handler.add(announcement_checker(), delay=30)
+        # 注册回调，接收全局公告推送
+        announcement_manager.register_callback(push_announcement_to_frontend)
 
         # Return to previous page
 
@@ -2235,6 +2277,10 @@ def startup():
             and State.deploy_config.Password is not None
     ):
         task_handler.add(RemoteAccess.keep_ssh_alive(), 60)
+    
+    # 启动全局公告 SSE 连接
+    from module.base.api_client import announcement_manager
+    announcement_manager.start()
 
 
 def clearup():
@@ -2246,6 +2292,11 @@ def clearup():
     RemoteAccess.kill_ssh_process()
     close_discord_rpc()
     stop_ocr_server_process()
+    
+    # 停止公告 SSE 连接
+    from module.base.api_client import announcement_manager
+    announcement_manager.stop()
+    
     for alas in ProcessManager._processes.values():
         alas.stop()
     State.clearup()
