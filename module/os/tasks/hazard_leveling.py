@@ -202,9 +202,13 @@ class OpsiHazard1Leveling(OSMap):
                         logger.info(f'行动力充足 ({self._action_point_total}), 切换到黄币补充任务获取黄币')
                         _previous_coins_ap_insufficient = False
                         
-                        # 收集可用的黄币补充任务（短猫、隐秘海域、深渊海域、塞壬要塞）
-                        # 智能调度功能要求：自动启用所有黄币补充任务
-                        all_coin_tasks = ['OpsiMeowfficerFarming', 'OpsiObscure', 'OpsiAbyssal', 'OpsiStronghold']
+                        # 检查黄币阈值适用范围配置
+                        # 如果关闭，只启用短猫相接；如果开启，启用所有黄币补充任务
+                        apply_to_all = self.config.cross_get(
+                            keys='OpsiHazard1Leveling.OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks',
+                            default=True
+                        )
+                        
                         task_names = {
                             'OpsiMeowfficerFarming': '短猫相接',
                             'OpsiObscure': '隐秘海域',
@@ -212,7 +216,17 @@ class OpsiHazard1Leveling(OSMap):
                             'OpsiStronghold': '塞壬要塞'
                         }
                         
-                        # 自动启用所有黄币补充任务的调度器
+                        # 根据配置决定启用哪些任务
+                        if apply_to_all:
+                            # 开启：启用所有黄币补充任务（短猫、隐秘海域、深渊海域、塞壬要塞）
+                            all_coin_tasks = ['OpsiMeowfficerFarming', 'OpsiObscure', 'OpsiAbyssal', 'OpsiStronghold']
+                            logger.info('黄币阈值适用范围：四任务，将启用所有黄币补充任务')
+                        else:
+                            # 关闭：仅启用短猫相接
+                            all_coin_tasks = ['OpsiMeowfficerFarming']
+                            logger.info('黄币阈值适用范围：仅短猫，将只启用短猫相接任务')
+                        
+                        # 自动启用黄币补充任务的调度器
                         enabled_tasks = []
                         auto_enabled_tasks = []
                         with self.config.multi_set():
