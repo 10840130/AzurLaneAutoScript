@@ -3795,7 +3795,7 @@
       "help": "一般不需要修改，只買行動力和紫幣即可"
     },
     "NotifyOpsiMail": {
-      "name": "OpsiGeneral.NotifyOpsiMail.name",
+      "name": "推送大世界相關郵件",
       "help": "OpsiGeneral.NotifyOpsiMail.help"
     }
   },
@@ -3827,7 +3827,7 @@
       "help": "在收集滿為前，暫時無視保留行動力設定，需要同時開啟 \"短貓相接\""
     },
     "AutoCollectShip": {
-      "name": "OpsiAshBeacon.AutoCollectShip.name",
+      "name": "自動獲取新META艦船",
       "help": "OpsiAshBeacon.AutoCollectShip.help"
     }
   },
@@ -3873,7 +3873,7 @@
       "help": "開啟後將帶來額外的行動力消耗，一般不用打開，慢慢打就好"
     },
     "IfSkipSirenResearch": {
-      "name": "OpsiExplore.IfSkipSirenResearch.name",
+      "name": "跳過塞壬研究裝置",
       "help": "OpsiExplore.IfSkipSirenResearch.help",
       "0": "0",
       "6": "6",
@@ -3881,7 +3881,7 @@
       "654": "654"
     },
     "SkipedSirenResearch": {
-      "name": "OpsiExplore.SkipedSirenResearch.name",
+      "name": "已經跳過塞壬研究裝置的海域",
       "help": "OpsiExplore.SkipedSirenResearch.help"
     },
     "LastZone": {
@@ -4038,7 +4038,7 @@
       "help": "雪风大人温馨提示:打开这个功能并指定海域后，将会在指定海域进行计划作战，不会再回到港口nanoda!侵蚀三推荐NA海域东南B，侵蚀五推荐卡利比安海B或者C nanoda!"
     },
     "APPreserveUntilReset": {
-      "name": "OpsiMeowfficerFarming.APPreserveUntilReset.name",
+      "name": "保留行動力直到月底",
       "help": "OpsiMeowfficerFarming.APPreserveUntilReset.help"
     }
   },
@@ -4055,7 +4055,7 @@
       "22": "22 | NA海域西南B"
     },
     "OperationCoinsPreserve": {
-      "name": "OpsiHazard1Leveling.OperationCoinsPreserve.name",
+      "name": "保留 X 個作戰補給憑證",
       "help": "OpsiHazard1Leveling.OperationCoinsPreserve.help"
     },
     "MinimumActionPointReserve": {
@@ -4071,14 +4071,14 @@
       "help": "侵蚀一明石一般只购买体力nanoda"
     },
     "RecordNonCL1AP": {
-      "name": "OpsiHazard1Leveling.RecordNonCL1AP.name",
+      "name": "統計非侵蝕1來源體力",
       "help": "OpsiHazard1Leveling.RecordNonCL1AP.help"
     }
   },
   "OpsiSirenBug": {
     "_info": {
-      "name": "OpsiSirenBug._info.name",
-      "help": "OpsiSirenBug._info.help"
+      "name": "塞壬研究裝置Bug利用",
+      "help": "專門用於配置塞壬研究裝置及其Bug利用的相關選項"
     },
     "SirenResearch_Enable": {
       "name": "OpsiSirenBug.SirenResearch_Enable.name",
@@ -4137,8 +4137,8 @@
   },
   "OpsiScheduling": {
     "_info": {
-      "name": "OpsiScheduling._info.name",
-      "help": "OpsiScheduling._info.help"
+      "name": "智能調度Beta",
+      "help": "侵蝕1與短貓相接之間的智能調度功能\n啟用後將根據黃幣和行動力自動切換任務並發送推送通知"
     },
     "SmartScheduling": {
       "ActionPointNotifyLevels": {
