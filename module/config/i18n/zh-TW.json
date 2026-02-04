@@ -3796,7 +3796,7 @@
     },
     "NotifyOpsiMail": {
       "name": "推送大世界相關郵件",
-      "help": "OpsiGeneral.NotifyOpsiMail.help"
+      "help": "推送關於侵蝕1和短貓的郵件，需要同時開啟「推送郵件」功能，由於郵件較多會比較吵"
     }
   },
   "OpsiAshBeacon": {
@@ -3828,7 +3828,7 @@
     },
     "AutoCollectShip": {
       "name": "自動獲取新META艦船",
-      "help": "OpsiAshBeacon.AutoCollectShip.help"
+      "help": "領取獎勵時自動獲取新META艦船。關閉後將不會點擊\"點擊同步\"按鈕，需要手動領取"
     }
   },
   "OpsiFleetFilter": {
@@ -3874,15 +3874,15 @@
     },
     "IfSkipSirenResearch": {
       "name": "跳過塞壬研究裝置",
-      "help": "OpsiExplore.IfSkipSirenResearch.help",
-      "0": "0",
-      "6": "6",
-      "65": "65",
-      "654": "654"
+      "help": "開啟後，將跳過對應座標等級的塞壬研究裝置，以方便卡bug\n經過了幾個海域的初步測試，但未完成一次完整的月度開荒，可能存在未知問題",
+      "0": "不跳過",
+      "6": "僅跳過6級",
+      "65": "跳過6級和5級",
+      "654": "跳過6級、5級和4級"
     },
     "SkipedSirenResearch": {
       "name": "已經跳過塞壬研究裝置的海域",
-      "help": "OpsiExplore.SkipedSirenResearch.help"
+      "help": "這個數值是自動記錄的，不需要手動修改。\n月初重新開荒時會重置，或者修改\"上一次完成的區域\"為0並重新運行月度開荒來重置"
     },
     "LastZone": {
       "name": "上一次完成的區域",
@@ -4039,7 +4039,7 @@
     },
     "APPreserveUntilReset": {
       "name": "保留行動力直到月底",
-      "help": "OpsiMeowfficerFarming.APPreserveUntilReset.help"
+      "help": "「保留 X 點行動力」設定不會在大世界重置前幾天減少\n注意：開啟後只會在跨月每日任務中消耗這些行動力，未啟用跨月每日任務時該設定無效，這意味著你需要手動使用這些行動力以獲得更高的收益"
     }
   },
   "OpsiHazard1Leveling": {
@@ -4056,7 +4056,7 @@
     },
     "OperationCoinsPreserve": {
       "name": "保留 X 個作戰補給憑證",
-      "help": "OpsiHazard1Leveling.OperationCoinsPreserve.help"
+      "help": "作戰補給憑證低於 X 時運行短貓相接，不建議修改"
     },
     "MinimumActionPointReserve": {
       "name": "保留 X 点行动力",
@@ -4072,7 +4072,7 @@
     },
     "RecordNonCL1AP": {
       "name": "統計非侵蝕1來源體力",
-      "help": "OpsiHazard1Leveling.RecordNonCL1AP.help"
+      "help": "開啟後，將統計所有來源的體力獲取資料（如明石商店購買）。關閉後，僅在侵蝕1練級任務中統計體力資料，忽略其他任務或手動操作時的體力獲取。"
     }
   },
   "OpsiSirenBug": {
@@ -4081,40 +4081,40 @@
       "help": "專門用於配置塞壬研究裝置及其Bug利用的相關選項"
     },
     "SirenResearch_Enable": {
-      "name": "OpsiSirenBug.SirenResearch_Enable.name",
-      "help": "OpsiSirenBug.SirenResearch_Enable.help"
+      "name": "塞壬研究裝置",
+      "help": "雪風大人提醒：消耗紫幣換黃幣，一個月沒有幾十萬海里慎用nanoda!"
     },
     "SirenBug_Enable": {
-      "name": "OpsiSirenBug.SirenBug_Enable.name",
-      "help": "OpsiSirenBug.SirenBug_Enable.help"
+      "name": "塞壬研究裝置Bug利用(實驗性)",
+      "help": "利用塞壬研究裝置Bug，無限刷取高侵蝕區域塞壬研究裝置資源\n啟用該功能前需啟用塞壬研究裝置功能，否則該功能將不生效"
     },
     "SirenBug_Type": {
-      "name": "OpsiSirenBug.SirenBug_Type.name",
-      "help": "OpsiSirenBug.SirenBug_Type.help",
-      "dangerous": "dangerous",
-      "safe": "safe"
+      "name": "海域類型切換",
+      "help": "選擇前往的海域是安全海域還是普通海域",
+      "dangerous": "普通海域",
+      "safe": "安全海域"
     },
     "SirenBug_Zone": {
-      "name": "OpsiSirenBug.SirenBug_Zone.name",
-      "help": "OpsiSirenBug.SirenBug_Zone.help"
+      "name": "指定Bug利用區域(實驗性)",
+      "help": "指定已刷出塞壬研究裝置的高侵蝕區域\n支援海域ID、國服/國際服/日服/台服海域名稱，例如 \"51\", \"NA海域東南E\", \"NA Ocean SE Sector E\"\n填入預設值0，或者刪除數值即可取消指定"
     },
     "DisableTaskSwitchDuringBug": {
-      "name": "OpsiSirenBug.DisableTaskSwitchDuringBug.name",
-      "help": "OpsiSirenBug.DisableTaskSwitchDuringBug.help",
+      "name": "Bug利用期間禁止任務切換(實驗性)",
+      "help": "實驗性功能 \nBug利用期間臨時禁用調度器的任務切換檢查，避免被委託、日常等任務打斷\n如果Bug利用過程中經常被其他到時任務中斷，可以啟用此選項",
       "True": "True",
       "False": "False"
     },
     "SirenBug_DailyCount": {
-      "name": "OpsiSirenBug.SirenBug_DailyCount.name",
-      "help": "OpsiSirenBug.SirenBug_DailyCount.help"
+      "name": "利用Bug次數(實驗性)",
+      "help": "已經利用塞壬Bug的次數，每次掃圖前會Sleep對應秒數"
     },
     "SirenBug_DailyCountRecord": {
-      "name": "OpsiSirenBug.SirenBug_DailyCountRecord.name",
-      "help": "OpsiSirenBug.SirenBug_DailyCountRecord.help"
+      "name": "Bug次數記錄時間(實驗性)",
+      "help": ""
     },
     "SirenBug_CountLimit": {
-      "name": "OpsiSirenBug.SirenBug_CountLimit.name",
-      "help": "OpsiSirenBug.SirenBug_CountLimit.help"
+      "name": "自動處理閾值(實驗性)",
+      "help": "實驗性功能，可能導致把塞壬研究裝置刷沒，刷沒後果自負\n當利用Bug次數達到設定閾值時，使用當前艦隊卡住敵艦並使用另一艦隊收菜。設為0則不啟用該功能"
     }
   },
   "OpsiCheckLeveling": {
@@ -4142,47 +4142,27 @@
     },
     "SmartScheduling": {
       "ActionPointNotifyLevels": {
-        "name": "OpsiScheduling.ActionPointNotifyLevels.name",
-        "help": "OpsiScheduling.ActionPointNotifyLevels.help"
+        "name": "行動力推送閾值",
+        "help": "雪風大人提醒：行動力升至或降至這些閾值時會發送推送通知nanoda!\n使用逗號分隔多個閾值，例如: 500,1000,2000,3000\n注意：需要在 Alas - 錯誤處理 中配置推送通知才能生效"
       },
       "OperationCoinsReturnThreshold": {
-        "name": "OpsiScheduling.OperationCoinsReturnThreshold.name",
-        "help": "OpsiScheduling.OperationCoinsReturnThreshold.help"
+        "name": "黃幣補充任務需補充的黃幣數",
+        "help": "侵蝕1黃幣不足後，需要短貓相接/隱秘海域/深淵海域/塞壬要塞補充多少黃幣才返回侵蝕1\n計算公式：返回閾值 = 侵蝕1保留值 + 此值\n例如：侵蝕1保留值=100000，此值=50000，則任務運行到黃幣≥150000時返回CL1\n特殊值：填 0 表示禁用黃幣檢查，任務只使用行動力閾值控制；填 null 表示使用預設值（等於侵蝕1保留值，最終閾值為2倍）\n此設定項可由下方開關控制其適用範圍"
       },
       "OperationCoinsReturnThresholdApplyToAllCoinTasks": {
-        "name": "OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks.name",
-        "help": "OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks.help",
+        "name": "黃幣閾值適用範圍：四任務/僅短貓",
+        "help": "開啟：此黃幣返回閾值同時應用於短貓相接、隱秘海域、深淵海域、塞壬要塞\n關閉：僅短貓相接使用此黃幣返回閾值，其它三個任務不做\"黃幣達標就返回侵蝕1\"的檢查；智能調度中，黃幣不足時只啟用短貓相接任務，不啟用其他三個任務",
         "True": "True",
         "False": "False"
       },
       "OperationCoinsPreserve": {
-        "name": "Smart Scheduling - CL1 Coins Preserve",
-        "help": "Coins to preserve in Hazard Leveling when smart scheduling is enabled\nThis setting overrides the coins preserve setting in Hazard Leveling task\nSet to 0 to use original setting"
+        "name": "智能調度-侵蝕1黃幣保留",
+        "help": "開啟智能調度時，侵蝕1練級保留的黃幣閥值\n此設定優先級高於侵蝕1任務中的黃幣保留值\n填 0 表示使用原配置"
       },
       "ActionPointPreserve": {
-        "name": "Smart Scheduling - AP Preserve",
-        "help": "Action points to preserve when smart scheduling is enabled\nApplies to all tasks: Hazard Leveling, Meowfficer Farming, and other coin tasks\nSet to 0 to use original setting"
+        "name": "智能調度-行動力保留",
+        "help": "開啟智能調度時，所有任務保留的行動力閥值\n同時作用於侵蝕1練級、短貓相接和其他黃幣補充任務\n填 0 表示使用原配置"
       }
-    }
-  },
-  "IslandSeasonTask": {
-    "_info": {
-      "name": "IslandSeasonTask._info.name",
-      "help": "IslandSeasonTask._info.help"
-    },
-    "ActionPointNotifyLevels": {
-      "name": "OpsiScheduling.ActionPointNotifyLevels.name",
-      "help": "OpsiScheduling.ActionPointNotifyLevels.help"
-    },
-    "OperationCoinsReturnThreshold": {
-      "name": "OpsiScheduling.OperationCoinsReturnThreshold.name",
-      "help": "OpsiScheduling.OperationCoinsReturnThreshold.help"
-    },
-    "OperationCoinsReturnThresholdApplyToAllCoinTasks": {
-      "name": "OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks.name",
-      "help": "OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks.help",
-      "True": "True",
-      "False": "False"
     }
   },
   "IslandSeasonTask": {
