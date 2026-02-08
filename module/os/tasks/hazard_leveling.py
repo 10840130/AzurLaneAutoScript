@@ -226,7 +226,7 @@ class OpsiHazard1Leveling(OSMap):
                         # 检查黄币阈值适用范围配置
                         # 默认值定义在 args.json (value: false)，表示仅短猫相接任务会应用黄币返回阈值
                         apply_to_all = self.config.cross_get(
-                            keys='OpsiScheduling.SmartScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks',
+                            keys='OpsiScheduling.OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks',
                             default=None
                         )
                         # 如果cross_get返回None（表示用户未在配置文件中设置此值），尝试兼容旧配置路径

@@ -4159,7 +4159,7 @@
       },
       "OperationCoinsReturnThreshold": {
         "name": "黃幣補充任務需補充的黃幣數",
-        "help": "侵蝕1黃幣不足後，需要短貓相接/隱秘海域/深淵海域/塞壬要塞補充多少黃幣才返回侵蝕1\n計算公式：返回閾值 = 侵蝕1保留值 + 此值\n例如：侵蝕1保留值=100000，此值=50000，則任務運行到黃幣≥150000時返回CL1\n特殊值：填 0 表示禁用黃幣檢查，任務只使用行動力閾值控製；填 null 表示使用預設值（等於侵蝕1保留值，最終閾值為2倍）\n此設定項可由下方開關控製其適用範圍"
+        "help": "侵蝕1黃幣不足後，需要短貓相接/隱秘海域/深淵海域/塞壬要塞補充多少黃幣才返回侵蝕1\n計算公式：返回閾值 = 侵蝕1保留值 + 此值\n例如：侵蝕1保留值=100000，此值=50000，則任務運行到黃幣≥150000時返回CL1\n特殊值：填 0 表示禁用黃幣檢查，任務只使用行動力閾值控制；填 null 表示使用預設值（等於侵蝕1保留值，最終閾值為2倍）\n此設定項可由下方開關控制其適用範圍"
       },
       "OperationCoinsReturnThresholdApplyToAllCoinTasks": {
         "name": "黃幣閾值適用範圍：四任務/僅短貓",
@@ -4179,7 +4179,7 @@
   },
   "IslandSeasonTask": {
     "_info": {
-      "name": "赛季任務",
+      "name": "賽季任務",
       "help": "IslandSeasonTask._info.help"
     },
     "TaskDict": {
@@ -4475,34 +4475,13 @@
       "Clear": "清除",
       "EnterPassword": "輸入密碼",
       "ChooseFile": "選擇檔案"
-    }
-  },
-  "SmartScheduling": {
-    "_info": {
-      "name": "智能調度",
-      "help": "大世界智能調度功能，用于協調侵蚀1練級與黄币补充任務之間的切換\n啟用后将根據黄币和行動力自動在不同任務之間切換并發送推送通知"
     },
-    "ActionPointNotifyLevels": {
-      "name": "行動力推送阈值",
-      "help": "行動力升至或降至這些阈值時會發送推送通知\n使用逗號分隔多个阈值，例如: 500,1000,2000,3000\n注意：需要在 Alas - 錯誤處理 中配置推送通知才能生效"
-    },
-    "OperationCoinsReturnThreshold": {
-      "name": "黄币补充任務需补充的黄币数",
-      "help": "侵蚀1黄币不足后，需要短猫相接/隱秘海域/深渊海域/塞壬要塞补充多少黄币才返回侵蚀1\n計算公式：返回阈值 = 侵蚀1保留值 + 此值\n例如：侵蚀1保留值=100000，此值=50000，則任務运行到黄币≥150000時返回CL1\n特殊值：填 0 表示禁用黄币檢查，任務只使用行動力阈值控製"
-    },
-    "OperationCoinsReturnThresholdApplyToAllCoinTasks": {
-      "name": "黄币阈值适用範圍",
-      "help": "開啟：此黄币返回阈值同時應用于短猫相接、隱秘海域、深渊海域、塞壬要塞\n關闭：仅短猫相接使用此黄币返回阈值，其它三个任務不做黄币達標就返回侵蚀1的檢查",
-      "True": "True",
-      "False": "False"
-    },
-    "OperationCoinsPreserve": {
-      "name": "智能調度-侵蚀1黄币保留",
-      "help": "開啟智能調度時，侵蚀1練級保留的黄币阀值\n此設置優先級高于侵蚀1任務中的黄币保留值\n填 0 表示使用原配置"
-    },
-    "ActionPointPreserve": {
-      "name": "智能調度-行動力保留",
-      "help": "開啟智能調度時，所有任務保留的行動力阀值\n同時作用于侵蚀1練級、短猫相接和其他黄币补充任務\n填 0 表示使用原配置"
+    "OpsiScheduling": {
+      "OperationCoinsPreserve": "Gui.OpsiScheduling.OperationCoinsPreserve",
+      "ActionPointPreserve": "Gui.OpsiScheduling.ActionPointPreserve",
+      "ActionPointNotifyLevels": "Gui.OpsiScheduling.ActionPointNotifyLevels",
+      "OperationCoinsReturnThreshold": "Gui.OpsiScheduling.OperationCoinsReturnThreshold",
+      "OperationCoinsReturnThresholdApplyToAllCoinTasks": "Gui.OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks"
     }
   }
 }
