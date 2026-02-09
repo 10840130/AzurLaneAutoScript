@@ -4140,6 +4140,12 @@
       "name": "Smart Scheduling",
       "help": "Operation Siren smart scheduling function"
     },
+    "UseSmartSchedulingOperationCoinsPreserve": {
+      "name": "OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve.name",
+      "help": "OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve.help",
+      "True": "True",
+      "False": "False"
+    },
     "OperationCoinsPreserve": {
       "name": "OpsiScheduling.OperationCoinsPreserve.name",
       "help": "OpsiScheduling.OperationCoinsPreserve.help"
@@ -4148,17 +4154,31 @@
       "name": "OpsiScheduling.ActionPointPreserve.name",
       "help": "OpsiScheduling.ActionPointPreserve.help"
     },
-    "ActionPointNotifyLevels": {
-      "name": "OpsiScheduling.ActionPointNotifyLevels.name",
-      "help": "OpsiScheduling.ActionPointNotifyLevels.help"
-    },
     "OperationCoinsReturnThreshold": {
       "name": "OpsiScheduling.OperationCoinsReturnThreshold.name",
       "help": "OpsiScheduling.OperationCoinsReturnThreshold.help"
     },
-    "OperationCoinsReturnThresholdApplyToAllCoinTasks": {
-      "name": "OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks.name",
-      "help": "OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks.help",
+    "EnableMeowfficerFarming": {
+      "name": "OpsiScheduling.EnableMeowfficerFarming.name",
+      "help": "OpsiScheduling.EnableMeowfficerFarming.help",
+      "True": "True",
+      "False": "False"
+    },
+    "EnableObscure": {
+      "name": "OpsiScheduling.EnableObscure.name",
+      "help": "OpsiScheduling.EnableObscure.help",
+      "True": "True",
+      "False": "False"
+    },
+    "EnableAbyssal": {
+      "name": "OpsiScheduling.EnableAbyssal.name",
+      "help": "OpsiScheduling.EnableAbyssal.help",
+      "True": "True",
+      "False": "False"
+    },
+    "EnableStronghold": {
+      "name": "OpsiScheduling.EnableStronghold.name",
+      "help": "OpsiScheduling.EnableStronghold.help",
       "True": "True",
       "False": "False"
     }
@@ -4463,11 +4483,14 @@
       "ChooseFile": "Choose file"
     },
     "OpsiScheduling": {
+      "UseSmartSchedulingOperationCoinsPreserve": "Gui.OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve",
       "OperationCoinsPreserve": "Gui.OpsiScheduling.OperationCoinsPreserve",
       "ActionPointPreserve": "Gui.OpsiScheduling.ActionPointPreserve",
-      "ActionPointNotifyLevels": "Gui.OpsiScheduling.ActionPointNotifyLevels",
       "OperationCoinsReturnThreshold": "Gui.OpsiScheduling.OperationCoinsReturnThreshold",
-      "OperationCoinsReturnThresholdApplyToAllCoinTasks": "Gui.OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks"
+      "EnableMeowfficerFarming": "Gui.OpsiScheduling.EnableMeowfficerFarming",
+      "EnableObscure": "Gui.OpsiScheduling.EnableObscure",
+      "EnableAbyssal": "Gui.OpsiScheduling.EnableAbyssal",
+      "EnableStronghold": "Gui.OpsiScheduling.EnableStronghold"
     }
   }
 }

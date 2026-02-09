@@ -4140,6 +4140,12 @@
       "name": "智能調度",
       "help": "大世界智能調度功能，用於協調侵蝕1練級與黃幣補充任務之間的切換\n啟用後將根據黃幣和行動力自動在不同任務之間切換並發送推送通知"
     },
+    "UseSmartSchedulingOperationCoinsPreserve": {
+      "name": "OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve.name",
+      "help": "OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve.help",
+      "True": "True",
+      "False": "False"
+    },
     "OperationCoinsPreserve": {
       "name": "侵蝕1黃幣最低保留",
       "help": "侵蝕1練級時低於此值時會自動切換至黃幣補充任務，開啟智能調度時此設定會覆蓋侵蝕1練級下的黃幣閾值"
@@ -4159,6 +4165,30 @@
     "OperationCoinsReturnThresholdApplyToAllCoinTasks": {
       "name": "黃幣閾值適用範圍：四任務/僅短貓",
       "help": "開啟：此黃幣返回閾值同時應用於短貓相接、隱秘海域、深淵海域、塞壬要塞；關閉：僅短貓相接使用此黃幣返回閾值，其它三個任務不做黃幣達標就返回侵蝕1的檢查；智能調度中，黃幣不足時只啟用短貓相接任務，不啟用其他三個任務",
+      "True": "已啟用",
+      "False": "未啟用"
+    },
+    "EnableMeowfficerFarming": {
+      "name": "啟用短貓相接",
+      "help": "智能調度中是否啟用短貓相接任務來補充黃幣",
+      "True": "已啟用",
+      "False": "未啟用"
+    },
+    "EnableObscure": {
+      "name": "啟用隱秘海域",
+      "help": "智能調度中是否啟用隱秘海域任務來補充黃幣",
+      "True": "已啟用",
+      "False": "未啟用"
+    },
+    "EnableAbyssal": {
+      "name": "啟用深淵海域",
+      "help": "智能調度中是否啟用深淵海域任務來補充黃幣",
+      "True": "已啟用",
+      "False": "未啟用"
+    },
+    "EnableStronghold": {
+      "name": "啟用塞壬要塞",
+      "help": "智能調度中是否啟用塞壬要塞任務來補充黃幣",
       "True": "已啟用",
       "False": "未啟用"
     },
@@ -4499,11 +4529,14 @@
       "ChooseFile": "選擇檔案"
     },
     "OpsiScheduling": {
+      "UseSmartSchedulingOperationCoinsPreserve": "Gui.OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve",
       "OperationCoinsPreserve": "Gui.OpsiScheduling.OperationCoinsPreserve",
       "ActionPointPreserve": "Gui.OpsiScheduling.ActionPointPreserve",
-      "ActionPointNotifyLevels": "Gui.OpsiScheduling.ActionPointNotifyLevels",
       "OperationCoinsReturnThreshold": "Gui.OpsiScheduling.OperationCoinsReturnThreshold",
-      "OperationCoinsReturnThresholdApplyToAllCoinTasks": "Gui.OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks"
+      "EnableMeowfficerFarming": "Gui.OpsiScheduling.EnableMeowfficerFarming",
+      "EnableObscure": "Gui.OpsiScheduling.EnableObscure",
+      "EnableAbyssal": "Gui.OpsiScheduling.EnableAbyssal",
+      "EnableStronghold": "Gui.OpsiScheduling.EnableStronghold"
     }
   }
 }

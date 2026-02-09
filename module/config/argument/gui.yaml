@@ -162,8 +162,12 @@ Text:
   ChooseFile:
 
 OpsiScheduling:
+  UseSmartSchedulingOperationCoinsPreserve:
   OperationCoinsPreserve:
   ActionPointPreserve:
-  ActionPointNotifyLevels:
+
   OperationCoinsReturnThreshold:
-  OperationCoinsReturnThresholdApplyToAllCoinTasks:
+  EnableMeowfficerFarming:
+  EnableObscure:
+  EnableAbyssal:
+  EnableStronghold:

@@ -3795,8 +3795,8 @@
       "help": "默认只购买体力nanoda。如果要购买紫币，设置为 'ActionPoint > PurpleCoins'"
     },
     "NotifyOpsiMail": {
-      "name": "推送大世界相关邮件",
-      "help": "推送关于侵蚀1和短猫的邮件，需要同时开启“推送邮件”功能，由于邮件较多会比较吵"
+      "name": "推送大世界相关信息",
+      "help": "推送关于侵蚀1和短猫的信息，需要同时开启“错误推送”功能，由于信息较多，可能会比较吵"
     }
   },
   "OpsiAshBeacon": {
@@ -4140,25 +4140,45 @@
       "name": "智能调度",
       "help": "大世界智能调度功能，用于协调侵蚀1练级与黄币补充任务之间的切换\n启用后将根据黄币和行动力自动在不同任务之间切换并发送推送通知"
     },
+    "UseSmartSchedulingOperationCoinsPreserve": {
+      "name": "获取 X 个作战补给凭证",
+      "help": "启用后将使用下方设置的 获取 X 个作战补给凭证 的配置，禁用则使用侵蚀1练级 黄币保留配置\n关闭后将使用行动力控制\n打开后使用黄币控制",
+      "True": "True",
+      "False": "False"
+    },
     "OperationCoinsPreserve": {
-      "name": "侵蚀1黄币最低保留",
-      "help": "侵蚀1练级时低于此值时会自动切换至黄币补充任务，开启智能调度时此设置会覆盖侵蚀1练级下的黄币阈值"
+      "name": "侵蚀1练级 保留 X 个作战补给凭证",
+      "help": "作战补给凭证低于 X 时运行黄币补充任务，不建议修改"
     },
     "ActionPointPreserve": {
-      "name": "行动力最低保留",
-      "help": "智能调度切换任务时，侵蚀1和所有黄币补充任务保留的最低行动力值\n建议设置不低于 500，开启智能调度时此设置会覆盖侵蚀1和短猫任务下的行动力阈值"
-    },
-    "ActionPointNotifyLevels": {
-      "name": "行动力推送阈值",
-      "help": "行动力升至或降至这些阈值时会发送推送通知\n使用逗号分隔多个阈值，例如: 500,1000,2000,3000\n注意：需要在 Alas - 错误处理 中配置推送通知才能生效"
+      "name": "短猫相接 保留 X 点行动力",
+      "help": "行动力低于 X 后停止，自动打开行动力箱子，X 包含箱子中的行动力，建议保留1000行动力给侵蚀1练级"
     },
     "OperationCoinsReturnThreshold": {
-      "name": "黄币补充任务需补充的黄币数",
-      "help": "侵蚀1黄币不足后，需要短猫相接补充多少黄币才返回侵蚀1\n计算公式：返回阈值 = 侵蚀1黄币最低保留 + 此值\n例如：侵蚀1黄币最低保留=100000，此值=50000，则任务运行到黄币≥150000时返回CL1"
+      "name": "获取 X 个作战补给凭证",
+      "help": "在黄币获取任务时 共获取(增加) X 个作战补给凭证后返回侵蚀1练级"
     },
-    "OperationCoinsReturnThresholdApplyToAllCoinTasks": {
-      "name": "黄币阈值适用范围：四任务/仅短猫",
-      "help": "开启：此黄币返回阈值同时应用于短猫相接、隐秘海域、深渊海域、塞壬要塞；关闭：仅短猫相接使用此黄币返回阈值，其它三个任务不做黄币达标就返回侵蚀1的检查；智能调度中，黄币不足时只启用短猫相接任务，不启用其他三个任务",
+    "EnableMeowfficerFarming": {
+      "name": "启用短猫相接",
+      "help": "智能调度中是否启用短猫相接任务来补充黄币",
+      "True": "已启用",
+      "False": "未启用"
+    },
+    "EnableObscure": {
+      "name": "启用隐秘海域",
+      "help": "智能调度中是否启用隐秘海域任务来补充黄币",
+      "True": "已启用",
+      "False": "未启用"
+    },
+    "EnableAbyssal": {
+      "name": "启用深渊海域",
+      "help": "智能调度中是否启用深渊海域任务来补充黄币",
+      "True": "已启用",
+      "False": "未启用"
+    },
+    "EnableStronghold": {
+      "name": "启用塞壬要塞",
+      "help": "智能调度中是否启用塞壬要塞任务来补充黄币",
       "True": "已启用",
       "False": "未启用"
     }
@@ -4463,11 +4483,14 @@
       "ChooseFile": "选择文件"
     },
     "OpsiScheduling": {
+      "UseSmartSchedulingOperationCoinsPreserve": "Gui.OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve",
       "OperationCoinsPreserve": "Gui.OpsiScheduling.OperationCoinsPreserve",
       "ActionPointPreserve": "Gui.OpsiScheduling.ActionPointPreserve",
-      "ActionPointNotifyLevels": "Gui.OpsiScheduling.ActionPointNotifyLevels",
       "OperationCoinsReturnThreshold": "Gui.OpsiScheduling.OperationCoinsReturnThreshold",
-      "OperationCoinsReturnThresholdApplyToAllCoinTasks": "Gui.OpsiScheduling.OperationCoinsReturnThresholdApplyToAllCoinTasks"
+      "EnableMeowfficerFarming": "Gui.OpsiScheduling.EnableMeowfficerFarming",
+      "EnableObscure": "Gui.OpsiScheduling.EnableObscure",
+      "EnableAbyssal": "Gui.OpsiScheduling.EnableAbyssal",
+      "EnableStronghold": "Gui.OpsiScheduling.EnableStronghold"
     }
   }
 }

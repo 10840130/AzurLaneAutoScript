@@ -11690,24 +11690,51 @@
       }
     },
     "OpsiScheduling": {
+      "UseSmartSchedulingOperationCoinsPreserve": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
       "OperationCoinsPreserve": {
         "type": "input",
-        "value": 100000
+        "value": 0
       },
       "ActionPointPreserve": {
         "type": "input",
         "value": 500
       },
-      "ActionPointNotifyLevels": {
-        "type": "input",
-        "value": "500,1000,2000,3000",
-        "valuetype": "str"
-      },
       "OperationCoinsReturnThreshold": {
         "type": "input",
-        "value": 30000
+        "value": 0
       },
-      "OperationCoinsReturnThresholdApplyToAllCoinTasks": {
+      "EnableMeowfficerFarming": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "EnableObscure": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "EnableAbyssal": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "EnableStronghold": {
         "type": "checkbox",
         "value": false,
         "option": [
