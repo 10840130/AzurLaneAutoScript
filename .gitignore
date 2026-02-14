@@ -10,6 +10,7 @@ config/tmp*
 !config/template*.json
 *.pyw
 dev_tools/debug_tools
+dev_tools/sync_zh_tw_translations.py
 .idea
 /screenshots
 /campaign/test/

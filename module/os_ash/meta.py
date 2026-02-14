@@ -82,7 +82,7 @@ def _server_support():
 
 
 def _server_support_dossier_auto_attack():
-    return server.server in ['cn', 'en']
+    return server.server in ['cn', 'en', 'tw']
 
 
 class OpsiAshBeacon(Meta):
