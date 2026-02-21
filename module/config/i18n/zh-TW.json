@@ -4185,8 +4185,8 @@
       "help": "大世界智能調度功能，用於協調侵蝕1練級與黃幣補充任務之間的切換\n啟用後將根據黃幣和行動力自動在不同任務之間切換並發送推送通知"
     },
     "UseSmartSchedulingOperationCoinsPreserve": {
-      "name": "OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve.name",
-      "help": "OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve.help",
+      "name": "獲取 X 個作戰補給憑證",
+      "help": "啟用後將使用下方設定的「獲取 X 個作戰補給憑證」的設定，停用則使用侵蝕1練級 黃幣保留設定\n關閉後將使用行動力控制\n開啟後使用黃幣控制",
       "True": "True",
       "False": "False"
     },
