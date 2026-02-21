@@ -47,8 +47,8 @@
       "help": ""
     },
     "Restart": {
-      "name": "再起動設定",
-      "help": ""
+      "name": "Task.Restart.name",
+      "help": "Task.Restart.help"
     },
     "Main": {
       "name": "メイン海域",
@@ -66,6 +66,10 @@
       "name": "Commission Farming",
       "help": ""
     },
+    "ThreeOilLowCost": {
+      "name": "三油低燃費",
+      "help": "3油消費の低コスト編成を使用して出撃し、旗艦のLv32到達時に自動で交代を行う機能です。"
+    },
     "EventGeneral": {
       "name": "イベント共通設定",
       "help": ""
@@ -82,12 +86,12 @@
       "name": "Raid",
       "help": ""
     },
+    "RaidScuttle": {
+      "name": "Task.RaidScuttle.name",
+      "help": "Task.RaidScuttle.help"
+    },
     "Hospital": {
       "name": "病院探訪ストーリー",
-      "help": ""
-    },
-    "Coalition": {
-      "name": "特集写真-撮影進行中",
       "help": ""
     },
     "Coalition": {
@@ -540,6 +544,22 @@
     "ScreenshotLength": {
       "name": "Error.ScreenshotLength.name",
       "help": "Error.ScreenshotLength.help"
+    },
+    "GameStuckRestart": {
+      "name": "Error.GameStuckRestart.name",
+      "help": "Error.GameStuckRestart.help"
+    },
+    "GameStuckThreshold": {
+      "name": "Error.GameStuckThreshold.name",
+      "help": "Error.GameStuckThreshold.help"
+    },
+    "AdbOfflineRestart": {
+      "name": "Error.AdbOfflineRestart.name",
+      "help": "Error.AdbOfflineRestart.help"
+    },
+    "AdbOfflineThreshold": {
+      "name": "Error.AdbOfflineThreshold.name",
+      "help": "Error.AdbOfflineThreshold.help"
     }
   },
   "Optimization": {
@@ -1345,7 +1365,9 @@
       "help": "TaskBalancer.TaskCall.help",
       "Main": "Main",
       "Main2": "Main2",
-      "Main3": "Main3"
+      "Main3": "Main3",
+      "GemsFarming": "GemsFarming",
+      "ThreeOilLowCost": "ThreeOilLowCost"
     }
   },
   "EventDaily": {
@@ -1378,6 +1400,19 @@
     "UseTicket": {
       "name": "Raid.UseTicket.name",
       "help": "Raid.UseTicket.help"
+    }
+  },
+  "RaidScuttle": {
+    "_info": {
+      "name": "RaidScuttle._info.name",
+      "help": "RaidScuttle._info.help"
+    },
+    "Sacrifice": {
+      "name": "RaidScuttle.Sacrifice.name",
+      "help": "RaidScuttle.Sacrifice.help",
+      "vanguard": "vanguard",
+      "flagship": "flagship",
+      "vanguard_flagship": "vanguard_flagship"
     }
   },
   "RaidDaily": {
@@ -3335,7 +3370,9 @@
       "help": "ShipyardDr.ResearchSeries.help",
       "2": "2",
       "3": "3",
-      "4": "4"
+      "4": "4",
+      "5": "5",
+      "6": "6"
     },
     "ShipIndex": {
       "name": "ShipyardDr.ShipIndex.name",
@@ -3369,7 +3406,8 @@
       "2": "2",
       "3": "3",
       "4": "4",
-      "5": "5"
+      "5": "5",
+      "6": "6"
     },
     "ShipIndex": {
       "name": "Shipyard.ShipIndex.name",
@@ -4317,6 +4355,20 @@
       "help": "GameManager.AutoRestart.help"
     }
   },
+  "EmulatorManagement": {
+    "_info": {
+      "name": "EmulatorManagement._info.name",
+      "help": "EmulatorManagement._info.help"
+    },
+    "ScheduledEmulatorRestart": {
+      "name": "EmulatorManagement.ScheduledEmulatorRestart.name",
+      "help": "EmulatorManagement.ScheduledEmulatorRestart.help"
+    },
+    "RestartIntervalHours": {
+      "name": "EmulatorManagement.RestartIntervalHours.name",
+      "help": "EmulatorManagement.RestartIntervalHours.help"
+    }
+  },
   "Storage": {
     "_info": {
       "name": "Storage._info.name",
@@ -4369,6 +4421,7 @@
     "MenuDevelop": {
       "HomePage": "ホームページ",
       "Translate": "翻訳",
+      "Announcement": "Gui.MenuDevelop.Announcement",
       "Update": "アップデータ",
       "Remote": "遠隔操作",
       "Utils": "ツール"

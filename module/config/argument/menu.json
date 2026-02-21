@@ -15,7 +15,8 @@
       "Main",
       "Main2",
       "Main3",
-      "GemsFarming"
+      "GemsFarming",
+      "ThreeOilLowCost"
     ]
   },
   "Event": {
@@ -26,6 +27,7 @@
       "Event",
       "Event2",
       "Raid",
+      "RaidScuttle",
       "Hospital",
       "Coalition",
       "MaritimeEscort",

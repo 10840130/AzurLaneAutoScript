@@ -47,8 +47,8 @@
       "help": ""
     },
     "Restart": {
-      "name": "重啟設定",
-      "help": ""
+      "name": "Task.Restart.name",
+      "help": "Task.Restart.help"
     },
     "Main": {
       "name": "主線圖",
@@ -66,6 +66,10 @@
       "name": "刷緊急委託",
       "help": ""
     },
+    "ThreeOilLowCost": {
+      "name": "三油低耗",
+      "help": "使用三油低耗陣容進行戰鬥，在旗艦達到32級時自動更換旗艦並退役。"
+    },
     "EventGeneral": {
       "name": "活動通用",
       "help": ""
@@ -82,12 +86,12 @@
       "name": "共鬥活動",
       "help": ""
     },
+    "RaidScuttle": {
+      "name": "Task.RaidScuttle.name",
+      "help": "Task.RaidScuttle.help"
+    },
     "Hospital": {
       "name": "深谷來信劇情",
-      "help": ""
-    },
-    "Coalition": {
-      "name": "光影風尚-拍攝進行時",
       "help": ""
     },
     "Coalition": {
@@ -540,6 +544,22 @@
     "ScreenshotLength": {
       "name": "出錯時，保留最後 X 張截圖",
       "help": ""
+    },
+    "GameStuckRestart": {
+      "name": "Error.GameStuckRestart.name",
+      "help": "Error.GameStuckRestart.help"
+    },
+    "GameStuckThreshold": {
+      "name": "Error.GameStuckThreshold.name",
+      "help": "Error.GameStuckThreshold.help"
+    },
+    "AdbOfflineRestart": {
+      "name": "Error.AdbOfflineRestart.name",
+      "help": "Error.AdbOfflineRestart.help"
+    },
+    "AdbOfflineThreshold": {
+      "name": "Error.AdbOfflineThreshold.name",
+      "help": "Error.AdbOfflineThreshold.help"
     }
   },
   "Optimization": {
@@ -1345,7 +1365,9 @@
       "help": "提醒: 玩家需提前設定好被調用的任務，否則將不會作用",
       "Main": "主線圖",
       "Main2": "主線圖-2",
-      "Main3": "主線圖-3"
+      "Main3": "主線圖-3",
+      "GemsFarming": "GemsFarming",
+      "ThreeOilLowCost": "ThreeOilLowCost"
     }
   },
   "EventDaily": {
@@ -1378,6 +1400,19 @@
     "UseTicket": {
       "name": "使用演習券",
       "help": ""
+    }
+  },
+  "RaidScuttle": {
+    "_info": {
+      "name": "RaidScuttle._info.name",
+      "help": "RaidScuttle._info.help"
+    },
+    "Sacrifice": {
+      "name": "RaidScuttle.Sacrifice.name",
+      "help": "RaidScuttle.Sacrifice.help",
+      "vanguard": "vanguard",
+      "flagship": "flagship",
+      "vanguard_flagship": "vanguard_flagship"
     }
   },
   "RaidDaily": {
@@ -3335,7 +3370,9 @@
       "help": "",
       "2": "二期科研",
       "3": "三期科研",
-      "4": "四期科研"
+      "4": "四期科研",
+      "5": "5",
+      "6": "6"
     },
     "ShipIndex": {
       "name": "艦船序號",
@@ -3369,7 +3406,8 @@
       "2": "二期科研",
       "3": "三期科研",
       "4": "四期科研",
-      "5": "五期科研"
+      "5": "五期科研",
+      "6": "6"
     },
     "ShipIndex": {
       "name": "艦船序號",
@@ -4363,6 +4401,20 @@
       "help": "遊戲被強製結束後自動登錄遊戲"
     }
   },
+  "EmulatorManagement": {
+    "_info": {
+      "name": "EmulatorManagement._info.name",
+      "help": "EmulatorManagement._info.help"
+    },
+    "ScheduledEmulatorRestart": {
+      "name": "EmulatorManagement.ScheduledEmulatorRestart.name",
+      "help": "EmulatorManagement.ScheduledEmulatorRestart.help"
+    },
+    "RestartIntervalHours": {
+      "name": "EmulatorManagement.RestartIntervalHours.name",
+      "help": "EmulatorManagement.RestartIntervalHours.help"
+    }
+  },
   "Storage": {
     "_info": {
       "name": "任務狀態",
@@ -4415,6 +4467,7 @@
     "MenuDevelop": {
       "HomePage": "主頁",
       "Translate": "翻譯",
+      "Announcement": "Gui.MenuDevelop.Announcement",
       "Update": "更新器",
       "Remote": "遠程控製",
       "Utils": "工具"

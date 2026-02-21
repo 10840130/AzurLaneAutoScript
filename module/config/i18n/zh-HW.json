@@ -47,8 +47,8 @@
       "help": ""
     },
     "Restart": {
-      "name": "故障自愈与热重载",
-      "help": ""
+      "name": "Task.Restart.name",
+      "help": "Task.Restart.help"
     },
     "Main": {
       "name": "主线攻坚方案",
@@ -66,6 +66,10 @@
       "name": "晶体结构深度挖掘",
       "help": ""
     },
+    "ThreeOilLowCost": {
+      "name": "三油低耗",
+      "help": "使用三油低耗陣容進行戰鬥，在旗艦達到32級時自動更換旗艦並退役。"
+    },
     "EventGeneral": {
       "name": "活动通用底层",
       "help": ""
@@ -81,6 +85,10 @@
     "Raid": {
       "name": "分布式共斗协议",
       "help": ""
+    },
+    "RaidScuttle": {
+      "name": "Task.RaidScuttle.name",
+      "help": "Task.RaidScuttle.help"
     },
     "Hospital": {
       "name": "深谷通讯链路",
@@ -101,10 +109,6 @@
     "WarArchives": {
       "name": "历史档案回溯",
       "help": "由于历史数据接口缺乏维护，自动开荒协议可能存在兼容性波动。如遇异常阻断，建议人工介入完成初始化，随后接管自律寻敌系统。"
-    },
-    "CoalitionSp": {
-      "name": "特别寻踪行动 SP",
-      "help": ""
     },
     "EventA": {
       "name": "周期作业 A区",
@@ -128,6 +132,10 @@
     },
     "RaidDaily": {
       "name": "常态化共斗流",
+      "help": ""
+    },
+    "CoalitionSp": {
+      "name": "特别寻踪行动 SP",
       "help": ""
     },
     "Commission": {
@@ -406,6 +414,7 @@
       "cn_android-25": "[国服] 水仙行动",
       "cn_android-26": "[国服] 冬月计划",
       "cn_android-27": "[国服] 长弓计划",
+      "cn_android-28": "[国服] 裁决协议",
       "cn_ios-0": "[国服] 夏威夷",
       "cn_ios-1": "[国服] 珊瑚海",
       "cn_ios-2": "[国服] 中途岛",
@@ -535,6 +544,22 @@
     "ScreenshotLength": {
       "name": "Error.ScreenshotLength.name",
       "help": "Error.ScreenshotLength.help"
+    },
+    "GameStuckRestart": {
+      "name": "Error.GameStuckRestart.name",
+      "help": "Error.GameStuckRestart.help"
+    },
+    "GameStuckThreshold": {
+      "name": "Error.GameStuckThreshold.name",
+      "help": "Error.GameStuckThreshold.help"
+    },
+    "AdbOfflineRestart": {
+      "name": "Error.AdbOfflineRestart.name",
+      "help": "Error.AdbOfflineRestart.help"
+    },
+    "AdbOfflineThreshold": {
+      "name": "Error.AdbOfflineThreshold.name",
+      "help": "Error.AdbOfflineThreshold.help"
     }
   },
   "Optimization": {
@@ -825,6 +850,7 @@
       "raid_20240130": "Spring Festive Fiasco",
       "raid_20240328": "From Zero to Hero Rerun",
       "raid_20250116": "Spring Fashion Festa",
+      "raid_20260212": "Spring Auction Adventure",
       "war_archives_20180607_cn": "archives Ink Stained Steel Sakura",
       "war_archives_20180726_cn": "archives Iris of Light and Dark",
       "war_archives_20181020_en": "archives Strive Wish and Strategize",
@@ -1339,7 +1365,9 @@
       "help": "触发低资源保护时，自动跳转至指定任务模块 (如主线图) 获取资源",
       "Main": "Main",
       "Main2": "Main2",
-      "Main3": "Main3"
+      "Main3": "Main3",
+      "GemsFarming": "GemsFarming",
+      "ThreeOilLowCost": "ThreeOilLowCost"
     }
   },
   "EventDaily": {
@@ -1372,6 +1400,19 @@
     "UseTicket": {
       "name": "Raid.UseTicket.name",
       "help": "Raid.UseTicket.help"
+    }
+  },
+  "RaidScuttle": {
+    "_info": {
+      "name": "RaidScuttle._info.name",
+      "help": "RaidScuttle._info.help"
+    },
+    "Sacrifice": {
+      "name": "RaidScuttle.Sacrifice.name",
+      "help": "RaidScuttle.Sacrifice.help",
+      "vanguard": "vanguard",
+      "flagship": "flagship",
+      "vanguard_flagship": "vanguard_flagship"
     }
   },
   "RaidDaily": {
@@ -3329,7 +3370,9 @@
       "help": "ShipyardDr.ResearchSeries.help",
       "2": "2",
       "3": "3",
-      "4": "4"
+      "4": "4",
+      "5": "5",
+      "6": "6"
     },
     "ShipIndex": {
       "name": "ShipyardDr.ShipIndex.name",
@@ -3363,7 +3406,8 @@
       "2": "2",
       "3": "3",
       "4": "4",
-      "5": "5"
+      "5": "5",
+      "6": "6"
     },
     "ShipIndex": {
       "name": "Shipyard.ShipIndex.name",
@@ -4311,6 +4355,20 @@
       "help": "GameManager.AutoRestart.help"
     }
   },
+  "EmulatorManagement": {
+    "_info": {
+      "name": "EmulatorManagement._info.name",
+      "help": "EmulatorManagement._info.help"
+    },
+    "ScheduledEmulatorRestart": {
+      "name": "EmulatorManagement.ScheduledEmulatorRestart.name",
+      "help": "EmulatorManagement.ScheduledEmulatorRestart.help"
+    },
+    "RestartIntervalHours": {
+      "name": "EmulatorManagement.RestartIntervalHours.name",
+      "help": "EmulatorManagement.RestartIntervalHours.help"
+    }
+  },
   "Storage": {
     "_info": {
       "name": "Storage._info.name",
@@ -4363,6 +4421,7 @@
     "MenuDevelop": {
       "HomePage": "主页",
       "Translate": "翻译",
+      "Announcement": "Gui.MenuDevelop.Announcement",
       "Update": "更新",
       "Remote": "远程",
       "Utils": "工具"
