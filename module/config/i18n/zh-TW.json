@@ -29,8 +29,8 @@
       "help": ""
     },
     "Island": {
-      "name": "Menu.Island.name",
-      "help": "Menu.Island.help"
+      "name": "島嶼計劃",
+      "help": ""
     },
     "Tool": {
       "name": "工具",
@@ -47,8 +47,8 @@
       "help": ""
     },
     "Restart": {
-      "name": "Task.Restart.name",
-      "help": "Task.Restart.help"
+      "name": "重啟設定",
+      "help": ""
     },
     "Main": {
       "name": "主線圖",
@@ -87,8 +87,8 @@
       "help": ""
     },
     "RaidScuttle": {
-      "name": "Task.RaidScuttle.name",
-      "help": "Task.RaidScuttle.help"
+      "name": "共鬥沉船",
+      "help": ""
     },
     "Hospital": {
       "name": "深谷来信劇情",
@@ -271,24 +271,24 @@
       "help": ""
     },
     "OpsiScheduling": {
-      "name": "OpsiScheduling._info.name",
-      "help": "OpsiScheduling._info.help"
+      "name": "智能調度",
+      "help": "大世界智能調度功能，用於協調侵蝕1練級與黃幣補充任務之間的切換\n啟用後將根據黃幣和行動力自動在不同任務之間切換並發送推送通知"
     },
     "OpsiCrossMonth": {
       "name": "跨月每日",
       "help": "    Alas將在大世界跨月重置之前10分鐘進入大世界，等待大世界重置但不退出大世界，然後完成新一天的大世界每日、隱秘海域、深淵海域和短貓相接，以獲得額外的金菜。運行大世界每日時，按\"大世界每日\"任務設定運行，其餘同理。\n    重要：Alas等待跨月期間，請不要操作遊戲。"
     },
     "OpsiDailyDelay": {
-      "name": "Task.OpsiDailyDelay.name",
-      "help": "Task.OpsiDailyDelay.help"
+      "name": "大世界任務延後",
+      "help": "在每日0點伺服器重啟前的可設定時間內，將侵蝕1和短貓任務自動延後至次日0點重啟完成後再執行"
     },
     "IslandInfo": {
-      "name": "Task.IslandInfo.name",
-      "help": "Task.IslandInfo.help"
+      "name": "島嶼資訊",
+      "help": "島嶼儀表板"
     },
     "IslandSeasonTask": {
-      "name": "Task.IslandSeasonTask.name",
-      "help": "Task.IslandSeasonTask.help"
+      "name": "賽季任務",
+      "help": ""
     },
     "Daemon": {
       "name": "半自動點擊",
@@ -4176,8 +4176,8 @@
       "help": "一般不需要修改，只買行動力和紫幣即可"
     },
     "NotifyOpsiMail": {
-      "name": "OpsiGeneral.NotifyOpsiMail.name",
-      "help": "OpsiGeneral.NotifyOpsiMail.help"
+      "name": "推送大世界相關資訊",
+      "help": "推送關於侵蝕1和短貓的資訊，需要同時開啟「錯誤推送」功能。\n由於資訊較多，可能會比較吵。"
     }
   },
   "OpsiAshBeacon": {
@@ -4208,8 +4208,8 @@
       "help": "在收集滿為前，暫時無視保留行動力設定，需要同時開啟 \"短貓相接\""
     },
     "AutoCollectShip": {
-      "name": "OpsiAshBeacon.AutoCollectShip.name",
-      "help": "OpsiAshBeacon.AutoCollectShip.help"
+      "name": "自動獲取新META艦船",
+      "help": "領取獎勵時自動獲取新META艦船。關閉後將不會點擊「點擊同步」按鈕，需要手動領取。"
     }
   },
   "OpsiFleetFilter": {
@@ -4254,16 +4254,16 @@
       "help": "開啟後將帶來額外的行動力消耗，一般不用打開，慢慢打就好"
     },
     "IfSkipSirenResearch": {
-      "name": "OpsiExplore.IfSkipSirenResearch.name",
-      "help": "OpsiExplore.IfSkipSirenResearch.help",
-      "0": "0",
-      "6": "6",
-      "65": "65",
-      "654": "654"
+      "name": "跳過塞壬研究裝置",
+      "help": "開啟後，將跳過對應座標等級的塞壬研究裝置，以方便卡 Bug。\n已在若干海域做過初步測試，但尚未完成一次完整的月度開荒，可能存在未知問題。",
+      "0": "不跳過",
+      "6": "僅跳過 6 級",
+      "65": "跳過 6 級和 5 級",
+      "654": "跳過 6 級、5 級和 4 級"
     },
     "SkipedSirenResearch": {
-      "name": "OpsiExplore.SkipedSirenResearch.name",
-      "help": "OpsiExplore.SkipedSirenResearch.help"
+      "name": "已跳過塞壬研究裝置的海域",
+      "help": "此數值為自動記錄，無需手動修改。\n月初重新開荒時會重置，或將「上一次完成的區域」改為 0 並重新執行月度開荒來重置。"
     },
     "LastZone": {
       "name": "上一次完成的區域",
@@ -4419,34 +4419,34 @@
       "help": "雪风大人温馨提示:打开这个功能并指定海域后，将会在指定海域进行计划作战，不会再回到港口nanoda!侵蚀三推荐NA海域东南B，侵蚀五推荐卡利比安海B或者C nanoda!"
     },
     "APPreserveUntilReset": {
-      "name": "OpsiMeowfficerFarming.APPreserveUntilReset.name",
-      "help": "OpsiMeowfficerFarming.APPreserveUntilReset.help"
+      "name": "保留行動力直到月底",
+      "help": "「保留 X 點行動力」設定不會在大世界重置前幾天自動降低。\n注意：開啟後只會在跨月每日任務中消耗這些行動力，未啟用跨月每日任務時此設定無效，這意味著你需要手動使用這些行動力以獲得更高收益。"
     },
     "SirenDetectorSearch_Enable": {
-      "name": "OpsiMeowfficerFarming.SirenDetectorSearch_Enable.name",
-      "help": "OpsiMeowfficerFarming.SirenDetectorSearch_Enable.help"
+      "name": "自動尋找塞壬探測裝置",
+      "help": "在短貓相接任務中自動尋找塞壬探測裝置，並記錄找到的海域。\n僅在中心海域（region 5）中尋找，不會在其他區域尋找。"
     },
     "SirenDetectorSearch_HazardLevel": {
-      "name": "OpsiMeowfficerFarming.SirenDetectorSearch_HazardLevel.name",
-      "help": "OpsiMeowfficerFarming.SirenDetectorSearch_HazardLevel.help",
+      "name": "塞壬探測裝置侵蝕等級",
+      "help": "在中心海域中按順時針出擊特定侵蝕等級的海域來尋找塞壬探測裝置。\n中心海域只有 5 與 6 級海域。\n注意：只在中心海域（region 5）中選擇，不會選到其他區域的海域。",
       "5": "5",
       "6": "6"
     },
     "SirenDetectorSearch_FleetForBlock": {
-      "name": "OpsiMeowfficerFarming.SirenDetectorSearch_FleetForBlock.name",
-      "help": "OpsiMeowfficerFarming.SirenDetectorSearch_FleetForBlock.help",
+      "name": "卡位艦隊",
+      "help": "用於卡住敵人的艦隊，以免搜尋時被敵人打斷，請選擇與短貓任務不同的艦隊。",
       "1": "1",
       "2": "2",
       "3": "3",
       "4": "4"
     },
     "SirenDetectorSearch_StopAfterFound": {
-      "name": "OpsiMeowfficerFarming.SirenDetectorSearch_StopAfterFound.name",
-      "help": "OpsiMeowfficerFarming.SirenDetectorSearch_StopAfterFound.help"
+      "name": "尋找 X 個塞壬探測裝置後停止",
+      "help": "尋找並記錄到指定數量的塞壬探測裝置後，停止搜尋並回到正常短貓流程。\n（實際要找的裝置數量由下方記錄表決定；若記錄為空，則找到 X 個裝置後停止。）\n記錄中已有 Y 個裝置時，會再找 X-Y 個後停止。\n設為 0 表示不限制，會一直搜尋直到行動力不足。"
     },
     "SirenDetectorSearch_FoundZones": {
-      "name": "OpsiMeowfficerFarming.SirenDetectorSearch_FoundZones.name",
-      "help": "OpsiMeowfficerFarming.SirenDetectorSearch_FoundZones.help"
+      "name": "已找到的塞壬探測裝置海域",
+      "help": "已找到的塞壬探測裝置海域列表。\n若對應海域的塞壬探測裝置已被使用，可以手動刪除該海域的記錄。"
     }
   },
   "OpsiHazard1Leveling": {
@@ -4462,8 +4462,8 @@
       "22": "22 | NA海域西南B"
     },
     "OperationCoinsPreserve": {
-      "name": "OpsiHazard1Leveling.OperationCoinsPreserve.name",
-      "help": "OpsiHazard1Leveling.OperationCoinsPreserve.help"
+      "name": "保留 X 個作戰補給憑證",
+      "help": "作戰補給憑證低於 X 時會運行短貓相接，不建議修改。"
     },
     "MinimumActionPointReserve": {
       "name": "保留 X 点行动力",
@@ -4478,62 +4478,62 @@
       "help": "侵蚀一明石一般只购买体力nanoda"
     },
     "RecordNonCL1AP": {
-      "name": "OpsiHazard1Leveling.RecordNonCL1AP.name",
-      "help": "OpsiHazard1Leveling.RecordNonCL1AP.help"
+      "name": "統計非侵蝕1來源體力",
+      "help": "開啟後，將統計所有來源的體力獲取數據（如明石商店購買）。\n關閉後，僅在侵蝕1練級任務中統計體力數據，忽略其他任務或手動操作時的體力獲取。"
     }
   },
   "OpsiSirenBug": {
     "_info": {
-      "name": "OpsiSirenBug._info.name",
-      "help": "OpsiSirenBug._info.help"
+      "name": "塞壬研究裝置 Bug 利用",
+      "help": "用於設定塞壬研究裝置及其 Bug 利用相關選項。"
     },
     "SirenResearch_Enable": {
-      "name": "OpsiSirenBug.SirenResearch_Enable.name",
-      "help": "OpsiSirenBug.SirenResearch_Enable.help"
+      "name": "塞壬研究裝置",
+      "help": "雪風大人提醒：消耗紫幣換黃幣，一個月沒有幾十萬海里慎用 nanoda！"
     },
     "SirenBug_Enable": {
-      "name": "OpsiSirenBug.SirenBug_Enable.name",
-      "help": "OpsiSirenBug.SirenBug_Enable.help"
+      "name": "塞壬研究裝置 Bug 利用（實驗性）",
+      "help": "利用塞壬研究裝置的 Bug，無限刷取高侵蝕區域的塞壬研究裝置資源。\n啟用該功能前需先啟用「塞壬研究裝置」，否則本功能不會生效。"
     },
     "SirenBug_Type": {
-      "name": "OpsiSirenBug.SirenBug_Type.name",
-      "help": "OpsiSirenBug.SirenBug_Type.help",
-      "dangerous": "dangerous",
-      "safe": "safe"
+      "name": "海域類型切換",
+      "help": "選擇前往的海域是安全海域還是普通海域。",
+      "dangerous": "普通海域",
+      "safe": "安全海域"
     },
     "SirenBug_Zone": {
-      "name": "OpsiSirenBug.SirenBug_Zone.name",
-      "help": "OpsiSirenBug.SirenBug_Zone.help"
+      "name": "指定 Bug 利用區域（實驗性）",
+      "help": "指定已刷出塞壬研究裝置的高侵蝕區域。\n支援海域 ID、國服／國際服／日服／台服海域名稱，例如「51」、「NA海域東南E」、「NA Ocean SE Sector E」。\n填入預設值 0，或刪除數值即可取消指定。"
     },
     "SirenBug_Grid": {
-      "name": "OpsiSirenBug.SirenBug_Grid.name",
-      "help": "OpsiSirenBug.SirenBug_Grid.help"
+      "name": "指定裝置格子（實驗性）",
+      "help": "指定塞壬研究裝置在地圖中的格子，若為空則執行掃圖尋找。\n格子格式為一個大寫字母代表列號加一個阿拉伯數字代表行號，如「B10」代表第二列第十行。\n地圖左上角格子為第一列第一行，即「A1」，往右一格列數加一，往下一格行數加一。"
     },
     "DisableTaskSwitchDuringBug": {
-      "name": "OpsiSirenBug.DisableTaskSwitchDuringBug.name",
-      "help": "OpsiSirenBug.DisableTaskSwitchDuringBug.help",
+      "name": "Bug 利用期間禁止任務切換（實驗性）",
+      "help": "實驗性功能。\nBug 利用期間暫時停用調度器的任務切換檢查，避免被委託、日常等任務打斷。\n若 Bug 利用過程中經常被其他到時任務中斷，可以啟用此選項。",
       "True": "True",
       "False": "False"
     },
     "SirenBug_DailyCount": {
-      "name": "OpsiSirenBug.SirenBug_DailyCount.name",
-      "help": "OpsiSirenBug.SirenBug_DailyCount.help"
+      "name": "利用 Bug 次數（實驗性）",
+      "help": "已利用塞壬 Bug 的次數，每次掃圖前會 Sleep 對應秒數。"
     },
     "SirenBug_DailyCountRecord": {
-      "name": "OpsiSirenBug.SirenBug_DailyCountRecord.name",
-      "help": "OpsiSirenBug.SirenBug_DailyCountRecord.help"
+      "name": "Bug 次數記錄時間（實驗性）",
+      "help": ""
     },
     "SirenBug_CountLimit": {
-      "name": "OpsiSirenBug.SirenBug_CountLimit.name",
-      "help": "OpsiSirenBug.SirenBug_CountLimit.help"
+      "name": "自動處理閾值（實驗性）",
+      "help": "實驗性功能，可能導致把塞壬研究裝置刷沒，刷沒後果自負。\n當利用 Bug 次數達到設定閾值時，使用當前艦隊卡住敵艦並使用另一艦隊收菜。設為 0 則不啟用該功能。"
     },
     "SirenBug_CrossDay": {
-      "name": "OpsiSirenBug.SirenBug_CrossDay.name",
-      "help": "OpsiSirenBug.SirenBug_CrossDay.help"
+      "name": "跨日暫停 Bug 利用",
+      "help": "每天 23:55 至次日 00:05 暫停 Bug 利用，避免跨日斷網導致吊機被刷沒。"
     },
     "SirenBug_AutoDisable": {
-      "name": "OpsiSirenBug.SirenBug_AutoDisable.name",
-      "help": "OpsiSirenBug.SirenBug_AutoDisable.help"
+      "name": "未找到塞壬裝置時自動關閉 Bug 利用",
+      "help": "萬一吊機消失，避免反覆進入吊機海域浪費行動力。"
     }
   },
   "OpsiCheckLeveling": {
@@ -4578,38 +4578,38 @@
       "help": "在黃幣獲取任務時，共獲取（增加） X 個作戰補給憑證後返回侵蝕1練級"
     },
     "EnableMeowfficerFarming": {
-      "name": "OpsiScheduling.EnableMeowfficerFarming.name",
-      "help": "OpsiScheduling.EnableMeowfficerFarming.help",
-      "True": "True",
-      "False": "False"
+      "name": "啟用短貓相接",
+      "help": "智能調度中是否啟用短貓相接任務來補充黃幣。",
+      "True": "已啟用",
+      "False": "未啟用"
     },
     "EnableObscure": {
-      "name": "OpsiScheduling.EnableObscure.name",
-      "help": "OpsiScheduling.EnableObscure.help",
-      "True": "True",
-      "False": "False"
+      "name": "啟用隱秘海域",
+      "help": "智能調度中是否啟用隱秘海域任務來補充黃幣。",
+      "True": "已啟用",
+      "False": "未啟用"
     },
     "EnableAbyssal": {
-      "name": "OpsiScheduling.EnableAbyssal.name",
-      "help": "OpsiScheduling.EnableAbyssal.help",
-      "True": "True",
-      "False": "False"
+      "name": "啟用深淵海域",
+      "help": "智能調度中是否啟用深淵海域任務來補充黃幣。",
+      "True": "已啟用",
+      "False": "未啟用"
     },
     "EnableStronghold": {
-      "name": "OpsiScheduling.EnableStronghold.name",
-      "help": "OpsiScheduling.EnableStronghold.help",
-      "True": "True",
-      "False": "False"
+      "name": "啟用塞壬要塞",
+      "help": "智能調度中是否啟用塞壬要塞任務來補充黃幣。",
+      "True": "已啟用",
+      "False": "未啟用"
     }
   },
   "OpsiDailyDelay": {
     "_info": {
-      "name": "OpsiDailyDelay._info.name",
-      "help": "OpsiDailyDelay._info.help"
+      "name": "大世界任務延後",
+      "help": "在每日 0 點伺服器重啟前的可設定時間內，將侵蝕1與短貓任務自動延後至次日 0 點重啟完成後再執行。"
     },
     "TriggerMinutesBeforeReset": {
-      "name": "OpsiDailyDelay.TriggerMinutesBeforeReset.name",
-      "help": "OpsiDailyDelay.TriggerMinutesBeforeReset.help",
+      "name": "提前觸發時間（分鐘）",
+      "help": "在每日 0 點前多少分鐘觸發任務延後，範圍 1–60 分鐘，預設為 5 分鐘。",
       "1": "1",
       "2": "2",
       "3": "3",
