@@ -1,4 +1,218 @@
 {
+  "Dashboard": {
+    "Oil": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Limit": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^000000",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "Coin": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Limit": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^FFAA33",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "Gem": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^FF3333",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "Pt": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^00BFFF",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "Cube": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^33FFFF",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "ActionPoint": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Total": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^0000FF",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "YellowCoin": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^FF8800",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "PurpleCoin": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^7700BB",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "Core": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^AAAAAA",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "Medal": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^FFDD00",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "Merit": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^FFFF00",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "GuildCoin": {
+      "Value": {
+        "type": "input",
+        "value": 0
+      },
+      "Color": {
+        "type": "input",
+        "value": "^AAAAAA",
+        "display": "hide"
+      },
+      "Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
   "Alas": {
     "Emulator": {
       "Serial": {
@@ -185,6 +399,14 @@
         "type": "checkbox",
         "value": true
       },
+      "StrictRestart": {
+        "type": "checkbox",
+        "value": false
+      },
+      "SaveErrorCount": {
+        "type": "input",
+        "value": 30
+      },
       "OnePushConfig": {
         "type": "textarea",
         "value": "provider: null",
@@ -193,6 +415,30 @@
       "ScreenshotLength": {
         "type": "input",
         "value": 1
+      },
+      "GameStuckRestart": {
+        "type": "checkbox",
+        "value": false
+      },
+      "GameStuckThreshold": {
+        "type": "input",
+        "value": 3,
+        "validate": [
+          1,
+          10
+        ]
+      },
+      "AdbOfflineRestart": {
+        "type": "checkbox",
+        "value": false
+      },
+      "AdbOfflineThreshold": {
+        "type": "input",
+        "value": 3,
+        "validate": [
+          1,
+          10
+        ]
       }
     },
     "Optimization": {
@@ -290,6 +536,28 @@
           "upload",
           "save_and_upload"
         ]
+      },
+      "TelemetryReport": {
+        "type": "checkbox",
+        "value": true
+      },
+      "BugReport": {
+        "type": "checkbox",
+        "value": true
+      }
+    },
+    "EmulatorManagement": {
+      "ScheduledEmulatorRestart": {
+        "type": "checkbox",
+        "value": false
+      },
+      "RestartIntervalHours": {
+        "type": "input",
+        "value": 4,
+        "validate": [
+          1,
+          24
+        ]
       }
     },
     "Storage": {
@@ -302,6 +570,31 @@
     }
   },
   "General": {
+    "Log": {
+      "LogKeepCount": {
+        "type": "input",
+        "value": 7
+      },
+      "LogBackUpMethod": {
+        "type": "select",
+        "value": "delete",
+        "option": [
+          "delete",
+          "zip",
+          "copy"
+        ]
+      },
+      "ZipMethod": {
+        "type": "select",
+        "value": "bz2",
+        "option": [
+          "bz2",
+          "gzip",
+          "xz",
+          "zip"
+        ]
+      }
+    },
     "Retirement": {
       "RetireMode": {
         "type": "select",
@@ -365,6 +658,12 @@
           "retire_all",
           "retire_10"
         ]
+      }
+    },
+    "YukikazeTaskManager": {
+      "TaskPriorityAdjustment": {
+        "type": "textarea",
+        "value": "Restart\n> OpsiCrossMonth > OpsiDailyDelay\n> Commission > Tactical > Research\n> Exercise\n> Dorm > Meowfficer > Guild > Gacha\n> Reward\n> ShopFrequent > ShopOnce > Shipyard > Freebies > Island\n> PrivateQuarters\n> OpsiExplore\n> Minigame > Awaken\n> OpsiAshBeacon\n> OpsiDaily > OpsiShop > OpsiVoucher\n> OpsiAbyssal > OpsiStronghold > OpsiObscure > OpsiArchive\n> Daily > Hard > OpsiAshBeacon > OpsiAshAssist > OpsiMonthBoss\n> Sos > EventSp > EventA > EventB > EventC > EventD\n> RaidDaily > CoalitionSp > WarArchives > MaritimeEscort\n> Event > Event2 > Raid > Hospital > HospitalEvent > Coalition > RaidScuttle > Main > Main2 > Main3\n> OpsiMeowfficerFarming\n> GemsFarming\n> OpsiHazard1Leveling\n> ThreeOilLowCost"
       }
     },
     "Storage": {
@@ -499,6 +798,10 @@
       "AmbushEvade": {
         "type": "checkbox",
         "value": true
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -515,6 +818,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -712,6 +1016,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -742,6 +1050,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -876,6 +1188,10 @@
       "AmbushEvade": {
         "type": "checkbox",
         "value": true
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -892,6 +1208,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -1089,6 +1406,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -1119,6 +1440,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -1253,6 +1578,10 @@
       "AmbushEvade": {
         "type": "checkbox",
         "value": true
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -1269,6 +1598,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -1466,6 +1796,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -1496,6 +1830,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -1591,39 +1929,77 @@
       }
     },
     "GemsFarming": {
+      "ChangeFlagship": {
+        "type": "select",
+        "value": "ship_equip",
+        "option": [
+          "ship",
+          "ship_equip"
+        ]
+      },
       "CommonCV": {
         "type": "select",
         "value": "any",
         "option": [
+          "custom",
           "any",
+          "eagle",
           "langley",
           "bogue",
           "ranger",
           "hermes"
         ]
       },
+      "CommonCVFilter": {
+        "type": "textarea",
+        "value": "bogue > ranger > langley > hermes"
+      },
       "ChangeVanguard": {
         "type": "select",
-        "value": "ship",
+        "value": "ship_equip",
         "option": [
           "disabled",
-          "ship"
+          "ship",
+          "ship_equip"
         ]
       },
       "CommonDD": {
         "type": "select",
         "value": "any",
         "option": [
+          "custom",
           "any",
           "favourite",
           "aulick_or_foote",
           "cassin_or_downes",
-          "z20_or_z21"
+          "z20_or_z21",
+          "DDG"
         ]
+      },
+      "CommonDDFilter": {
+        "type": "textarea",
+        "value": "z20 > z21 > aulick > foote > cassin > downes"
+      },
+      "EquipmentCode": {
+        "type": "textarea",
+        "value": "DD: null\nbogue: null\nhermes: null\nlangley: null\nranger: null",
+        "mode": "yaml"
+      },
+      "ALLowHighFlagshipLevel": {
+        "type": "checkbox",
+        "value": false
+      },
+      "ALLowLowVanguardLevel": {
+        "type": "checkbox",
+        "value": false
+      },
+      "DelayTaskIFNoFlagship": {
+        "type": "checkbox",
+        "value": false
       },
       "CommissionLimit": {
         "type": "checkbox",
-        "value": true
+        "value": false
       }
     },
     "Campaign": {
@@ -1688,6 +2064,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -1705,6 +2085,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -1822,6 +2203,590 @@
         "display": "display"
       }
     },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only"
+        ],
+        "display": "display"
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ],
+        "display": "hide"
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "use_open_ocean_support",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ],
+        "display": "hide"
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate_ignore",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ],
+        "display": "hide"
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_red_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ],
+        "display": "hide"
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ],
+        "display": "hide"
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_red_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Fleet2Onsen": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "ThreeOilLowCost": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "ThreeOilLowCost",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 120,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "GemsFarming": {
+      "ChangeFlagship": {
+        "type": "select",
+        "value": "ship_equip",
+        "option": [
+          "ship",
+          "ship_equip"
+        ]
+      },
+      "CommonCV": {
+        "type": "select",
+        "value": "any",
+        "option": [
+          "custom",
+          "any",
+          "eagle",
+          "langley",
+          "bogue",
+          "ranger",
+          "hermes"
+        ]
+      },
+      "CommonCVFilter": {
+        "type": "textarea",
+        "value": "bogue > ranger > langley > hermes"
+      },
+      "ChangeVanguard": {
+        "type": "select",
+        "value": "ship_equip",
+        "option": [
+          "disabled",
+          "ship",
+          "ship_equip"
+        ]
+      },
+      "CommonDD": {
+        "type": "select",
+        "value": "any",
+        "option": [
+          "custom",
+          "any",
+          "favourite",
+          "aulick_or_foote",
+          "cassin_or_downes",
+          "z20_or_z21",
+          "DDG"
+        ]
+      },
+      "CommonDDFilter": {
+        "type": "textarea",
+        "value": "z20 > z21 > aulick > foote > cassin > downes"
+      },
+      "EquipmentCode": {
+        "type": "textarea",
+        "value": "DD: null\nbogue: null\nhermes: null\nlangley: null\nranger: null",
+        "mode": "yaml"
+      },
+      "ALLowHighFlagshipLevel": {
+        "type": "checkbox",
+        "value": false
+      },
+      "ALLowLowVanguardLevel": {
+        "type": "checkbox",
+        "value": false
+      },
+      "DelayTaskIFNoFlagship": {
+        "type": "checkbox",
+        "value": false
+      },
+      "CommissionLimit": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "12-4"
+      },
+      "Event": {
+        "type": "select",
+        "value": "campaign_main",
+        "option": [
+          "event_20220526_cn",
+          "event_20260226_cn"
+        ],
+        "display": "hide",
+        "option_cn": [
+          "event_20260226_cn"
+        ],
+        "option_en": [
+          "event_20260226_cn"
+        ],
+        "option_jp": [
+          "event_20260226_cn"
+        ],
+        "option_tw": [
+          "event_20220526_cn"
+        ],
+        "option_bold": [
+          "event_20220526_cn",
+          "event_20260226_cn"
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": true
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "StopCondition": {
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "RunCount": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "non_stop_clear_all",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Fleet": {
+      "Fleet1": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet1Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet1Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet1Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Fleet2": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet2Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet2Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet2Step": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "FleetOrder": {
+        "type": "select",
+        "value": "fleet1_all_fleet2_standby",
+        "option": [
+          "fleet1_all_fleet2_standby",
+          "fleet1_standby_fleet2_all"
+        ],
+        "display": "display"
+      }
+    },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only"
+        ],
+        "display": "display"
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ],
+        "display": "hide"
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "use_open_ocean_support",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ],
+        "display": "hide"
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate_ignore",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ],
+        "display": "hide"
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_red_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ],
+        "display": "hide"
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ],
+        "display": "hide"
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_red_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Fleet2Onsen": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
     "Storage": {
       "Storage": {
         "type": "storage",
@@ -1858,7 +2823,9 @@
         "option": [
           "Main",
           "Main2",
-          "Main3"
+          "Main3",
+          "GemsFarming",
+          "ThreeOilLowCost"
         ]
       }
     },
@@ -1965,6 +2932,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -1981,6 +2952,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -2178,6 +3150,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -2208,6 +3184,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -2360,6 +3340,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -2376,6 +3360,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -2573,6 +3558,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -2603,6 +3592,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -2774,6 +3767,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -2790,6 +3787,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -2856,6 +3854,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119,
@@ -2892,6 +3894,421 @@
         "type": "checkbox",
         "value": false,
         "display": "hide"
+      },
+      "Fleet2Onsen": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "RaidScuttle": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "RaidScuttle",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 120,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "RaidScuttle": {
+      "Sacrifice": {
+        "type": "select",
+        "value": "vanguard",
+        "option": [
+          "vanguard",
+          "flagship",
+          "vanguard_flagship"
+        ]
+      }
+    },
+    "Raid": {
+      "Mode": {
+        "type": "select",
+        "value": "hard",
+        "option": [
+          "easy",
+          "normal",
+          "hard",
+          "ex"
+        ]
+      },
+      "UseTicket": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "dynamic",
+        "display": "hide"
+      },
+      "Event": {
+        "type": "state",
+        "value": "campaign_main",
+        "option": [
+          "raid_20260212"
+        ],
+        "option_cn": [
+          "raid_20260212"
+        ],
+        "option_en": [
+          "raid_20260212"
+        ],
+        "option_jp": [
+          "raid_20260212"
+        ],
+        "option_tw": [
+          "raid_20260212"
+        ],
+        "option_bold": [
+          "raid_20260212"
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "StopCondition": {
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "RunCount": {
+        "type": "input",
+        "value": 0
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "non_stop_clear_all",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Fleet": {
+      "Fleet1": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "display": "hide"
+      },
+      "Fleet1Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ],
+        "display": "hide"
+      },
+      "Fleet1Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet1Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "display": "hide"
+      },
+      "Fleet2": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "display": "hide"
+      },
+      "Fleet2Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "display": "hide"
+      },
+      "FleetOrder": {
+        "type": "select",
+        "value": "fleet1_all_fleet2_standby",
+        "option": [
+          "fleet1_mob_fleet2_boss",
+          "fleet1_boss_fleet2_mob",
+          "fleet1_all_fleet2_standby",
+          "fleet1_standby_fleet2_all"
+        ],
+        "display": "hide"
+      }
+    },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only",
+          "boss_only",
+          "hunt_and_boss",
+          "every_combat"
+        ]
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ]
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "2_grid_to_boss",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ],
+        "display": "hide"
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ],
+        "display": "hide"
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119,
+        "display": "hide"
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "hide"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Fleet2Onsen": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "Storage": {
@@ -2960,6 +4377,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -3029,6 +4447,11 @@
         "value": false,
         "display": "hide"
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119,
@@ -3062,6 +4485,11 @@
         "display": "hide"
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false,
         "display": "hide"
@@ -3173,6 +4601,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "Coalition": {
@@ -3209,6 +4641,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -3275,6 +4708,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119,
@@ -3308,6 +4745,11 @@
         "display": "hide"
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false,
         "display": "hide"
@@ -3362,6 +4804,78 @@
       "Enable": {
         "type": "checkbox",
         "value": true
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "EventShop": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "EventShop",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "EventShop": {
+      "UnlockSSRShip": {
+        "type": "checkbox",
+        "value": true
+      },
+      "BuyURShip": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "PresetFilter": {
+        "type": "select",
+        "value": "all",
+        "option": [
+          "all",
+          "custom"
+        ]
+      },
+      "CustomFilter": {
+        "type": "textarea",
+        "value": "EquipUR > EquipSSR > Cube > GachaTicket\n> Array > Chip > CatT3 \n> Meta > SkinBox\n> Oil > Coin > Medal > ExpBookT1 > FoodT1\n> DR > PR\n> AugmentCore > AugmentEnhanceT2 > AugmentChangeT2 > AugmentChangeT1\n> CatT2 > CatT1 > PlateGeneralT3 > PlateT3 > BoxT4\n> ShipSSR"
       }
     },
     "Storage": {
@@ -3646,6 +5160,52 @@
           "war_archives_20190321_en",
           "war_archives_20191031_en",
           "war_archives_20181020_en"
+        ],
+        "option_bold": [
+          "war_archives_20180607_cn",
+          "war_archives_20180726_cn",
+          "war_archives_20181020_en",
+          "war_archives_20181026_en",
+          "war_archives_20181227_cn",
+          "war_archives_20190221_en",
+          "war_archives_20190314_en",
+          "war_archives_20190321_en",
+          "war_archives_20190620_en",
+          "war_archives_20190911_cn",
+          "war_archives_20191010_en",
+          "war_archives_20191031_en",
+          "war_archives_20200312_cn",
+          "war_archives_20200507_cn",
+          "war_archives_20200603_cn",
+          "war_archives_20200806_cn",
+          "war_archives_20200820_cn",
+          "war_archives_20200903_cn",
+          "war_archives_20200917_cn",
+          "war_archives_20201012_cn",
+          "war_archives_20201029_cn",
+          "war_archives_20201229_cn",
+          "war_archives_20210225_cn",
+          "war_archives_20210325_cn",
+          "war_archives_20210422_cn",
+          "war_archives_20210527_cn",
+          "war_archives_20210624_cn",
+          "war_archives_20210819_cn",
+          "war_archives_20210916_cn",
+          "war_archives_20211014_cn",
+          "war_archives_20211028_cn",
+          "war_archives_20211111_cn",
+          "war_archives_20211229_cn",
+          "war_archives_20220210_cn",
+          "war_archives_20220224_cn",
+          "war_archives_20220324_cn",
+          "war_archives_20220414_cn",
+          "war_archives_20220428_cn",
+          "war_archives_20220526_cn",
+          "war_archives_20220728_cn",
+          "war_archives_20220915_cn",
+          "war_archives_20221222_cn",
+          "war_archives_20230223_cn",
+          "war_archives_20231026_cn"
         ]
       },
       "Mode": {
@@ -3677,6 +5237,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -3693,6 +5257,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -3890,6 +5455,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -3920,6 +5489,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -4084,6 +5657,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -4101,6 +5678,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -4302,6 +5880,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -4332,6 +5914,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -4496,6 +6082,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -4513,6 +6103,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -4714,6 +6305,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -4744,6 +6339,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -4908,6 +6507,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -4925,6 +6528,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -5126,6 +6730,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -5156,6 +6764,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -5320,6 +6932,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -5337,6 +6953,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -5538,6 +7155,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -5568,6 +7189,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -5722,6 +7347,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -5739,6 +7368,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -5941,6 +7571,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119
@@ -5971,6 +7605,10 @@
         ]
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false
       }
@@ -6132,6 +7770,10 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "StopCondition": {
@@ -6149,6 +7791,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -6215,6 +7858,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119,
@@ -6248,6 +7895,11 @@
         "display": "hide"
       },
       "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Fleet2Onsen": {
         "type": "checkbox",
         "value": false,
         "display": "hide"
@@ -6359,12 +8011,16 @@
         "type": "checkbox",
         "value": true,
         "display": "hide"
+      },
+      "UseRecommendFleet": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "Coalition": {
       "Mode": {
         "type": "select",
-        "value": "sp",
+        "value": "hard",
         "option": [
           "easy",
           "normal",
@@ -6396,6 +8052,7 @@
         "value": "non_stop",
         "option": [
           "non_stop",
+          "non_stop_clear_all",
           "100_percent_clear",
           "map_3_stars",
           "threat_safe",
@@ -6462,6 +8119,10 @@
         "type": "checkbox",
         "value": false
       },
+      "Fleet1Onsen": {
+        "type": "checkbox",
+        "value": false
+      },
       "Fleet2Value": {
         "type": "input",
         "value": 119,
@@ -6498,6 +8159,11 @@
         "type": "checkbox",
         "value": false,
         "display": "hide"
+      },
+      "Fleet2Onsen": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
       }
     },
     "Storage": {
@@ -6512,13 +8178,11 @@
   "Commission": {
     "Scheduler": {
       "Enable": {
-        "type": "lock",
-        "value": true,
+        "type": "checkbox",
+        "value": false,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "NextRun": {
@@ -6582,7 +8246,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -6675,13 +8339,11 @@
   "Research": {
     "Scheduler": {
       "Enable": {
-        "type": "lock",
-        "value": true,
+        "type": "checkbox",
+        "value": false,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "NextRun": {
@@ -6792,7 +8454,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -6836,6 +8498,11 @@
       "FeedFilter": {
         "type": "textarea",
         "value": "20000 > 10000 > 5000 > 3000 > 2000 > 1000"
+      },
+      "BuyFood": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
       }
     },
     "BuyFurniture": {
@@ -6870,7 +8537,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -6955,7 +8622,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -7039,13 +8706,11 @@
   "Reward": {
     "Scheduler": {
       "Enable": {
-        "type": "lock",
-        "value": true,
+        "type": "checkbox",
+        "value": false,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "NextRun": {
@@ -7093,7 +8758,7 @@
       },
       "CollectWeeklyMission": {
         "type": "checkbox",
-        "value": true
+        "value": false
       }
     },
     "Storage": {
@@ -7153,6 +8818,1759 @@
       "Favourite": {
         "type": "checkbox",
         "value": false
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "Island": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Island",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 120,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "Island1": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option3": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "Character3": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option4": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "Character4": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island2": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          2
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option3": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          3
+        ]
+      },
+      "Character3": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option4": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          4
+        ]
+      },
+      "Character4": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island3": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option3": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      "Character3": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island4": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option3": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Character3": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option4": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Character4": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island5": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option3": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Character3": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option4": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Character4": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island6": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option3": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "Character3": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option4": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "Character4": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island7": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island8": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island9": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island10": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island11": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island12": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island13": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island14": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island15": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      }
+    },
+    "Island16": {
+      "Receive": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Option1": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Character1": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
+      },
+      "Option2": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Character2": {
+        "type": "select",
+        "value": "manjuu",
+        "option": [
+          "manjuu",
+          "saratoga",
+          "new_jersey",
+          "tashkent",
+          "lemalin",
+          "shimakaze",
+          "akashi",
+          "ying_swei",
+          "chao_ho",
+          "william_d_porter",
+          "chen_hai",
+          "unicorn",
+          "cheshire",
+          "amagi_chan",
+          "helena",
+          "atago",
+          "friedrich_der_grobe"
+        ]
       }
     },
     "Storage": {
@@ -7451,6 +10869,18 @@
       }
     },
     "Exercise": {
+      "DelayUntilHoursBeforeNextUpdate": {
+        "type": "select",
+        "value": 12,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          12
+        ]
+      },
       "OpponentChooseMode": {
         "type": "select",
         "value": "max_exp",
@@ -7880,7 +11310,8 @@
           2,
           3,
           4,
-          5
+          5,
+          6
         ]
       },
       "ShipIndex": {
@@ -8037,7 +11468,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -8273,13 +11704,25 @@
         "type": "input",
         "value": 0.4
       },
+      "UseRepairPack": {
+        "type": "checkbox",
+        "value": false
+      },
+      "RepairPackThreshold": {
+        "type": "input",
+        "value": 0.9
+      },
       "DoRandomMapEvent": {
         "type": "checkbox",
         "value": true
       },
       "AkashiShopFilter": {
         "type": "textarea",
-        "value": "ActionPoint > PurpleCoins"
+        "value": "ActionPoint"
+      },
+      "NotifyOpsiMail": {
+        "type": "checkbox",
+        "value": true
       }
     },
     "Storage": {
@@ -8349,6 +11792,10 @@
         "value": true
       },
       "EnsureFullyCollected": {
+        "type": "checkbox",
+        "value": true
+      },
+      "AutoCollectShip": {
         "type": "checkbox",
         "value": true
       }
@@ -8458,6 +11905,21 @@
         "type": "checkbox",
         "value": false
       },
+      "IfSkipSirenResearch": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          6,
+          65,
+          654
+        ]
+      },
+      "SkipedSirenResearch": {
+        "type": "textarea",
+        "value": "",
+        "display": "disabled"
+      },
       "LastZone": {
         "type": "input",
         "value": 0
@@ -8539,6 +12001,10 @@
       "CustomFilter": {
         "type": "textarea",
         "value": "LoggerAbyssalT6 > LoggerAbyssalT5 > LoggerObscure > LoggerAbyssalT4 > ActionPoint > PurpleCoins\n> GearDesignPlanT3 > PlateRandomT4 > DevelopmentMaterialT3 > GearDesignPlanT2 > GearPart\n> OrdnanceTestingReportT3 > OrdnanceTestingReportT2 > DevelopmentMaterialT2 > OrdnanceTestingReportT1\n> METARedBook > CrystallizedHeatResistantSteel > NanoceramicAlloy > NeuroplasticProstheticArm > SupercavitationGenerator"
+      },
+      "DisableBeforeDate": {
+        "type": "input",
+        "value": 0
       }
     },
     "Storage": {
@@ -8645,6 +12111,19 @@
       "UseTuningSample": {
         "type": "checkbox",
         "value": true
+      },
+      "SkipSirenResearchMission": {
+        "type": "checkbox",
+        "value": false
+      },
+      "KeepMissionZone": {
+        "type": "checkbox",
+        "value": false
+      },
+      "MissionZones": {
+        "type": "stored",
+        "value": null,
+        "display": "hide"
       }
     },
     "OpsiFleet": {
@@ -8709,6 +12188,10 @@
       }
     },
     "OpsiObscure": {
+      "SkipHazard2Obscure": {
+        "type": "checkbox",
+        "value": false
+      },
       "ForceRun": {
         "type": "checkbox",
         "value": false
@@ -8894,9 +12377,18 @@
       }
     },
     "OpsiStronghold": {
+      "SubmarineEveryCombat": {
+        "type": "checkbox",
+        "value": false
+      },
       "ForceRun": {
         "type": "checkbox",
         "value": false
+      },
+      "HasStronghold": {
+        "type": "stored",
+        "value": true,
+        "display": "hide"
       }
     },
     "OpsiFleetFilter": {
@@ -9028,6 +12520,7 @@
         "type": "select",
         "value": 5,
         "option": [
+          2,
           3,
           4,
           5,
@@ -9038,6 +12531,44 @@
       "TargetZone": {
         "type": "input",
         "value": 0
+      },
+      "StayInZone": {
+        "type": "checkbox",
+        "value": false
+      },
+      "APPreserveUntilReset": {
+        "type": "checkbox",
+        "value": false
+      },
+      "SirenDetectorSearch_Enable": {
+        "type": "checkbox",
+        "value": false
+      },
+      "SirenDetectorSearch_HazardLevel": {
+        "type": "select",
+        "value": 5,
+        "option": [
+          5,
+          6
+        ]
+      },
+      "SirenDetectorSearch_FleetForBlock": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "SirenDetectorSearch_StopAfterFound": {
+        "type": "input",
+        "value": 0
+      },
+      "SirenDetectorSearch_FoundZones": {
+        "type": "textarea",
+        "value": ""
       }
     },
     "OpsiFleet": {
@@ -9110,6 +12641,81 @@
           44,
           22
         ]
+      },
+      "OperationCoinsPreserve": {
+        "type": "input",
+        "value": 100000
+      },
+      "MinimumActionPointReserve": {
+        "type": "input",
+        "value": 200
+      },
+      "ExecuteFixedPatrolScan": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Cl1Filter": {
+        "type": "textarea",
+        "value": "ActionPoint"
+      },
+      "RecordNonCL1AP": {
+        "type": "checkbox",
+        "value": true
+      }
+    },
+    "OpsiSirenBug": {
+      "SirenResearch_Enable": {
+        "type": "checkbox",
+        "value": false
+      },
+      "SirenBug_Enable": {
+        "type": "checkbox",
+        "value": false
+      },
+      "SirenBug_Type": {
+        "type": "select",
+        "value": "dangerous",
+        "option": [
+          "dangerous",
+          "safe"
+        ]
+      },
+      "SirenBug_Zone": {
+        "type": "input",
+        "value": 0
+      },
+      "SirenBug_Grid": {
+        "type": "input",
+        "value": null
+      },
+      "DisableTaskSwitchDuringBug": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "SirenBug_DailyCount": {
+        "type": "input",
+        "value": 0
+      },
+      "SirenBug_DailyCountRecord": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "SirenBug_CountLimit": {
+        "type": "input",
+        "value": 0
+      },
+      "SirenBug_CrossDay": {
+        "type": "checkbox",
+        "value": false
+      },
+      "SirenBug_AutoDisable": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "OpsiFleet": {
@@ -9127,6 +12733,121 @@
         "type": "checkbox",
         "value": false,
         "display": "hide"
+      }
+    },
+    "OpsiCheckLeveling": {
+      "TargetLevel": {
+        "type": "input",
+        "value": 0
+      },
+      "LastRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "DelayAfterFull": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "OpsiScheduling": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "hide"
+      },
+      "Command": {
+        "type": "input",
+        "value": "OpsiScheduling",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 120,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "OpsiScheduling": {
+      "UseSmartSchedulingOperationCoinsPreserve": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "OperationCoinsPreserve": {
+        "type": "input",
+        "value": 0
+      },
+      "ActionPointPreserve": {
+        "type": "input",
+        "value": 500
+      },
+      "OperationCoinsReturnThreshold": {
+        "type": "input",
+        "value": 0
+      },
+      "EnableMeowfficerFarming": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "EnableObscure": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "EnableAbyssal": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "EnableStronghold": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       }
     },
     "Storage": {
@@ -9156,6 +12877,141 @@
       "Command": {
         "type": "input",
         "value": "OpsiCrossMonth",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 120,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "OpsiDailyDelay": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "OpsiDailyDelay",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 120,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "OpsiDailyDelay": {
+      "TriggerMinutesBeforeReset": {
+        "type": "select",
+        "value": 5,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          15,
+          20,
+          30,
+          45,
+          60
+        ]
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "IslandInfo": {
+    "IslandSeasonTask": {
+      "TaskDict": {
+        "type": "textarea",
+        "value": ""
+      }
+    },
+    "IslandTechnology": {
+      "TechnologyStatus": {
+        "type": "textarea",
+        "value": ""
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "IslandSeasonTask": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "IslandSeasonTask",
         "display": "hide"
       },
       "SuccessInterval": {
@@ -9230,6 +13086,42 @@
         "option_bold": [
           true
         ]
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "BoxDisassemble": {
+    "BoxDisassemble": {
+      "UsePurpleBox": {
+        "type": "checkbox",
+        "value": false
+      },
+      "PurpleBoxLimit": {
+        "type": "input",
+        "value": 100
+      },
+      "UseBlueBox": {
+        "type": "checkbox",
+        "value": false
+      },
+      "BlueBoxLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "UseWhiteBox": {
+        "type": "checkbox",
+        "value": true
+      },
+      "WhiteBoxLimit": {
+        "type": "input",
+        "value": 2000
       }
     },
     "Storage": {
