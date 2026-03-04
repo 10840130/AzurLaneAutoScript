@@ -191,25 +191,25 @@ class OpsiHazard1Leveling(CoinTaskMixin, OSMap):
         self.fleet_set(self.config.OpsiFleet_Fleet)
         search_completed = self.run_strategic_search()
 
-        # 无论战略搜索是否正常完成，都执行后续重扫和巡逻，以确保任务不被遗漏
-        if True: 
-            if not search_completed and search_completed is not None:
-                 logger.warning("战略搜索返回 False，但仍将继续执行重扫/巡逻")
+        if not search_completed and search_completed is not None:
+            logger.warning("战略搜索返回 False，可能已被提前中断")
 
-            self._solved_map_event = set()
-            self._solved_fleet_mechanism = False
-            self.clear_question()
-            self.map_rescan()
+        # 第一次重扫：检查是否还有事件
+        self._solved_map_event = set()
+        self._solved_fleet_mechanism = False
+        self.map_rescan()
 
-            if self.config.OpsiHazard1Leveling_ExecuteFixedPatrolScan:
-                exec_fixed = getattr(self.config, 'OpsiHazard1Leveling_ExecuteFixedPatrolScan', False)
-                if exec_fixed and not self._solved_map_event:
-                    self._execute_fixed_patrol_scan(ExecuteFixedPatrolScan=True)
-                    self._solved_map_event = set()
-                    self.clear_question()
-                    self.map_rescan()
+        # 强制移动逻辑
+        if self.config.OpsiHazard1Leveling_ExecuteFixedPatrolScan:
+            if not self._solved_map_event:
+                self._execute_fixed_patrol_scan(ExecuteFixedPatrolScan=True)
+                # 第二次重扫：舰队移动后再次重扫
+                self._solved_map_event = set()
+                self.map_rescan()
 
         self.handle_after_auto_search()
+
+        # 明石遭遇记录
         solved_events = getattr(self, '_solved_map_event', set())
         if 'is_akashi' in solved_events:
             try:
@@ -221,6 +221,7 @@ class OpsiHazard1Leveling(CoinTaskMixin, OSMap):
                 logger.attr('cl1_akashi_monthly', data.get('akashi_encounters', 0))
             except Exception:
                 logger.exception('Failed to persist CL1 akashi monthly count')
+
 
     def _cl1_handle_telemetry(self):
         """处理遥测数据提交"""
