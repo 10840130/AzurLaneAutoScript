@@ -282,6 +282,10 @@
       "name": "大世界任務延後",
       "help": "在每日0點伺服器重啟前的可設定時間內，將侵蝕1和短貓任務自動延後至次日0點重啟完成後再執行"
     },
+    "OpsiSimulator": {
+      "name": "大世界模擬器 Alpha",
+      "help": "使用蒙地卡羅演算法估算在當前狀態下持續進行侵蝕循環一段時間後的結果，此功能不會影響 Alas 正常運行\n模型所用參數均取自 Alas 設定與統計，請確保已正確設定智能調度等大世界設定\n目前為測試版本，短貓僅支援侵蝕5，結果僅供參考"
+    },
     "IslandInfo": {
       "name": "島嶼資訊",
       "help": "島嶼儀表板"
@@ -4821,6 +4825,32 @@
       "help": "EmulatorManagement.RestartIntervalHours.help"
     }
   },
+  "OpsiSimulatorParameters": {
+    "_info": {
+      "name": "參數設定",
+      "help": ""
+    },
+    "Samples": {
+      "name": "採樣數",
+      "help": "理論上越大模擬越精準但更消耗效能"
+    },
+    "TotalTime": {
+      "name": "總模擬時間",
+      "help": "模擬經過多長時間（單位：秒）\n若為0則為從現在開始當月剩餘時間"
+    },
+    "TimeUseRatio": {
+      "name": "時間利用率",
+      "help": "總模擬時間中多少比例進行侵蝕循環"
+    },
+    "InitialAp": {
+      "name": "初始行動力",
+      "help": "填0為自動取得，不建議修改"
+    },
+    "InitialCoin": {
+      "name": "初始黃幣",
+      "help": "填0為自動取得，不建議修改"
+    }
+  },
   "Storage": {
     "_info": {
       "name": "任務狀態",
@@ -4873,7 +4903,7 @@
     "MenuDevelop": {
       "HomePage": "主頁",
       "Translate": "翻譯",
-      "Announcement": "Gui.MenuDevelop.Announcement",
+      "Announcement": "公告",
       "Update": "更新器",
       "Remote": "遠程控制",
       "Utils": "工具"
