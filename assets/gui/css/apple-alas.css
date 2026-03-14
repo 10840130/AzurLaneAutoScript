@@ -40,7 +40,7 @@ Modern Apple Style Theme for Alas - Refined v2
 	/* === 字体栈 === */
 	/* 优先使用等宽字体 Maple Mono，回退到常用中文字体 */
 	/* 全局界面字体（只需要修改这里即可全局调整） */
-	--alas-font-stack: "LXGW WenKai Mono", "Maple Mono NF CN ExtraBold", "Noto Sans SC", "Microsoft YaHei", "SimHei", sans-serif;
+	--alas-font-stack: "Sarasa Term TC", "Microsoft JhengHei", "Microsoft YaHei", "Noto Sans SC", Consolas, monospace;
 	/* === 间距系统 === */
 	/* 统一管理内外边距，保持视觉一致性 */
 	--spacing-xs: 4px;
@@ -649,7 +649,7 @@ select {
 /* ================= Logs ================= */
 /* 日志区域：等宽字体，淡背景 */
 #pywebio-scope-log {
-	font-family: 'JetBrains Mono NL', var(--alas-font-stack) !important;
+	font-family: 'Sarasa Term TC', var(--alas-font-stack) !important;
 	font-size: 13px !important;
 	background-color: #fbfbfd !important;
 }

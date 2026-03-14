@@ -5,7 +5,7 @@
 body {
     background-color: #FFFBF0 !important; /* Warm creamy background */
     color: #4A1919 !important; /* Dark brownish-red for text, softer than black */
-    font-family: 'LXGW WenKai Mono', "Microsoft YaHei", "SimHei", sans-serif !important;
+    font-family: 'Sarasa Term TC', "Microsoft JhengHei", "Microsoft YaHei", "SimHei", monospace !important;
     /* Subtle background pattern - Gold Dust / Paper texture */
     background-image: radial-gradient(#F2C76E 1px, transparent 1px) !important;
     background-size: 30px 30px !important;
@@ -275,7 +275,7 @@ pre.rich-traceback-code {
     font-weight: 800 !important;
     letter-spacing: 1.5px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    font-family: 'LXGW WenKai Mono', "Microsoft YaHei", serif !important; /* Try serif for header if available */
+    font-family: 'Sarasa Term TC', "Microsoft JhengHei", "Microsoft YaHei", monospace !important;
 }
 
 [style*="--header-icon--"] svg path {
@@ -295,7 +295,7 @@ pre.rich-traceback-code {
     border-left: 4px solid #D9363E;
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-    font-family: 'JetBrains Mono NL', monospace !important;
+    font-family: 'Sarasa Term TC', Consolas, monospace !important;
 }
 
 /* Special Text */
@@ -351,7 +351,7 @@ body::before, body::after {
     
     /* Text (Chun/Fu) */
     color: #F2C76E;
-    font-family: 'LXGW WenKai Mono', "Kaiti", "STKaiti", "SimKai", serif; /* Calligraphy font */
+    font-family: 'Sarasa Term TC', "Microsoft JhengHei", "Kaiti", serif;
     font-weight: bold;
     display: flex;
     justify-content: center;
