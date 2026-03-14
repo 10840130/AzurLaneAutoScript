@@ -121,7 +121,7 @@ class GeneratedConfig:
     DropRecord_ResearchRecord = 'do_not'  # do_not, save, upload, save_and_upload
     DropRecord_CommissionRecord = 'do_not'  # do_not, save, upload, save_and_upload
     DropRecord_CombatRecord = 'do_not'  # do_not, save
-    DropRecord_OpsiRecord = 'do_not'  # do_not, save, upload, save_and_upload
+    DropRecord_OpsiRecord = 'upload'  # do_not, save, upload, save_and_upload
     DropRecord_MeowfficerBuy = 'do_not'  # do_not, save
     DropRecord_MeowfficerTalent = 'do_not'  # do_not, save, upload, save_and_upload
     DropRecord_TelemetryReport = True
@@ -146,7 +146,7 @@ class GeneratedConfig:
     PublicEmotion_FleetOnsen = False
 
     # Group `YukikazeTaskManager`
-    YukikazeTaskManager_TaskPriorityAdjustment = 'Restart\n> OpsiCrossMonth > OpsiDailyDelay\n> Commission > Tactical > Research\n> Exercise\n> Dorm > Meowfficer > Guild > Gacha\n> Reward\n> ShopFrequent > ShopOnce > Shipyard > Freebies > Island\n> PrivateQuarters\n> OpsiExplore\n> Minigame > Awaken\n> OpsiAshBeacon\n> OpsiDaily > OpsiShop > OpsiVoucher\n> OpsiAbyssal > OpsiStronghold > OpsiObscure > OpsiArchive\n> Daily > Hard > OpsiAshBeacon > OpsiAshAssist > OpsiMonthBoss\n> Sos > EventSp > EventA > EventB > EventC > EventD\n> RaidDaily > CoalitionSp > WarArchives > MaritimeEscort\n> Event > Event2 > Raid > Hospital > HospitalEvent > Coalition > RaidScuttle > Main > Main2 > Main3\n> OpsiMeowfficerFarming\n> GemsFarming\n> OpsiHazard1Leveling\n> ThreeOilLowCost'
+    YukikazeTaskManager_TaskPriorityAdjustment = 'Restart\n> OpsiCrossMonth > OpsiDailyDelay\n> Commission > Tactical > Research\n> Exercise\n> Dorm > Meowfficer > Guild > Gacha\n> Reward\n> ShopFrequent > ShopOnce > Shipyard > Freebies > Island\n> PrivateQuarters\n> OpsiExplore\n> Minigame > Awaken\n> OpsiAshBeacon\n> OpsiDaily > OpsiShop > OpsiVoucher\n> OpsiAbyssal > OpsiStronghold > OpsiObscure > OpsiArchive\n> Daily > Hard > OpsiAshBeacon > OpsiAshAssist > OpsiMonthBoss\n> Sos > EventSp > EventA > EventB > EventC > EventD\n> RaidDaily > CoalitionSp > WarArchives > MaritimeEscort\n> Event > Event2 > Raid > Hospital > HospitalEvent > Coalition > RaidScuttle > Main > Main2 > Main3\n> OpsiMeowfficerFarming\n> GemsFarming\n> Ambush11\n> OpsiHazard1Leveling\n> ThreeOilLowCost'
 
     # Group `OneClickRetire`
     OneClickRetire_KeepLimitBreak = 'keep_limit_break'  # keep_limit_break, do_not_keep
@@ -185,11 +185,11 @@ class GeneratedConfig:
     # Group `Fleet`
     Fleet_Fleet1 = 1  # 1, 2, 3, 4, 5, 6
     Fleet_Fleet1Formation = 'double_line'  # line_ahead, double_line, diamond
-    Fleet_Fleet1Mode = 'combat_auto'  # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
+    Fleet_Fleet1Mode = 'combat_auto'  # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left, hide_in_upper_left
     Fleet_Fleet1Step = 3  # 2, 3, 4, 5
     Fleet_Fleet2 = 2  # 0, 1, 2, 3, 4, 5, 6
     Fleet_Fleet2Formation = 'double_line'  # line_ahead, double_line, diamond
-    Fleet_Fleet2Mode = 'combat_auto'  # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
+    Fleet_Fleet2Mode = 'combat_auto'  # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left, hide_in_upper_left
     Fleet_Fleet2Step = 2  # 2, 3, 4, 5
     Fleet_FleetOrder = 'fleet1_mob_fleet2_boss'  # fleet1_mob_fleet2_boss, fleet1_boss_fleet2_mob, fleet1_all_fleet2_standby, fleet1_standby_fleet2_all
 
@@ -253,6 +253,8 @@ class GeneratedConfig:
     GemsFarming_ALLowLowVanguardLevel = False
     GemsFarming_DelayTaskIFNoFlagship = False
     GemsFarming_CommissionLimit = False
+    GemsFarming_VanguardLevelMin = 1
+    GemsFarming_VanguardLevelMax = 125
 
     # Group `EventGeneral`
     EventGeneral_PtLimit = 0
@@ -507,6 +509,7 @@ class GeneratedConfig:
     Island16_Character2 = 'manjuu'  # manjuu, saratoga, new_jersey, tashkent, lemalin, shimakaze, akashi, ying_swei, chao_ho, william_d_porter, chen_hai, unicorn, cheshire, amagi_chan, helena, atago, friedrich_der_grobe
 
     # Group `GeneralShop`
+    GeneralShop_Enable = True
     GeneralShop_UseGems = False
     GeneralShop_Refresh = False
     GeneralShop_BuySkinBox = False
@@ -514,6 +517,7 @@ class GeneratedConfig:
     GeneralShop_Filter = 'BookRedT3 > BookYellowT3 > BookBlueT3 > BookRedT2\n> Cube\n> FoodT6 > FoodT5'
 
     # Group `GuildShop`
+    GuildShop_Enable = True
     GuildShop_Refresh = True
     GuildShop_Filter = 'PlateT4 > BookT3 > PR > CatT3 > Chip > BookT2 > Retrofit > FoodT6 > FoodT5 > CatT2 > BoxT4'
     GuildShop_BOX_T3 = 'ironblood'  # eagle, royal, sakura, ironblood
@@ -530,6 +534,7 @@ class GeneratedConfig:
     GuildShop_PR3 = 'cheshire'  # cheshire, mainz, odin, champagne
 
     # Group `MedalShop2`
+    MedalShop2_Enable = True
     MedalShop2_Filter = 'DR > PR\n> BookRedT3 > BookYellowT3 > BookBlueT3\n> BookRedT2 > BookYellowT2 > BookBlueT2\n> RetrofitT3\n> FoodT6 > FoodT5\n> PlateGeneralT3 > PlateWildT3'
     MedalShop2_RETROFIT_T1 = 'cl'  # dd, cl, bb, cv
     MedalShop2_RETROFIT_T2 = 'cl'  # dd, cl, bb, cv
@@ -539,10 +544,12 @@ class GeneratedConfig:
     MedalShop2_PLATE_T3 = 'general'  # general, gun, torpedo, antiair, plane
 
     # Group `MeritShop`
+    MeritShop_Enable = True
     MeritShop_Refresh = False
     MeritShop_Filter = 'Cube'
 
     # Group `CoreShop`
+    CoreShop_Enable = True
     CoreShop_Filter = 'Array'
 
     # Group `ShipyardDr`
@@ -699,7 +706,7 @@ class GeneratedConfig:
     OpsiMeowfficerFarming_SirenDetectorSearch_Enable = False
     OpsiMeowfficerFarming_SirenDetectorSearch_HazardLevel = 5  # 5, 6
     OpsiMeowfficerFarming_SirenDetectorSearch_FleetForBlock = 2  # 1, 2, 3, 4
-    OpsiMeowfficerFarming_SirenDetectorSearch_StopAfterFound = 0
+    OpsiMeowfficerFarming_SirenDetectorSearch_StopAfterFound = 1
     OpsiMeowfficerFarming_SirenDetectorSearch_FoundZones = None
 
     # Group `OpsiHazard1Leveling`
@@ -716,6 +723,7 @@ class GeneratedConfig:
     OpsiSirenBug_SirenBug_Type = 'dangerous'  # dangerous, safe
     OpsiSirenBug_SirenBug_Zone = 0
     OpsiSirenBug_SirenBug_Grid = None
+    OpsiSirenBug_SirenBug_SyncDailyCount = False  # True, False
     OpsiSirenBug_DisableTaskSwitchDuringBug = False  # True, False
     OpsiSirenBug_SirenBug_DailyCount = 0
     OpsiSirenBug_SirenBug_DailyCountRecord = datetime.datetime(2020, 1, 1, 0, 0)
@@ -737,6 +745,8 @@ class GeneratedConfig:
     OpsiScheduling_EnableObscure = False  # True, False
     OpsiScheduling_EnableAbyssal = False  # True, False
     OpsiScheduling_EnableStronghold = False  # True, False
+    OpsiScheduling_MeowStartEarlyMode = 'balanced'  # aggressive, balanced, conservative
+    OpsiScheduling_MeowStartEarlyEnable = False
 
     # Group `OpsiDailyDelay`
     OpsiDailyDelay_TriggerMinutesBeforeReset = 5  # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30, 45, 60
@@ -778,6 +788,13 @@ class GeneratedConfig:
     # Group `EmulatorManagement`
     EmulatorManagement_ScheduledEmulatorRestart = False
     EmulatorManagement_RestartIntervalHours = 4
+
+    # Group `OpsiSimulatorParameters`
+    OpsiSimulatorParameters_Samples = 1000
+    OpsiSimulatorParameters_TotalTime = 0
+    OpsiSimulatorParameters_TimeUseRatio = 0.8
+    OpsiSimulatorParameters_InitialAp = 0
+    OpsiSimulatorParameters_InitialCoin = 0
 
     # Group `Storage`
     Storage_Storage = {}

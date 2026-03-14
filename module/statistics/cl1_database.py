@@ -113,7 +113,11 @@ class Cl1Database:
             'battle_count': 0,
             'akashi_encounters': 0,
             'akashi_ap': 0,
-            'akashi_ap_entries': []
+            'akashi_ap_entries': [],
+            # 短猫数据
+            'meow_battle_count': 0,
+            'meow_round_times': [],
+            'meow_battle_times': [],  # 短猫单场战斗时间
         }
 
     def save_stats(self, instance: str, month: str, data: Dict[str, Any]):
@@ -264,6 +268,154 @@ class Cl1Database:
                         self.migrate_from_json(json_file, instance_dir.name)
         except Exception as e:
             logger.error(f"Error during auto migration scan: {e}")
+
+    # ========== 短猫数据记录方法 ==========
+
+    def increment_meow_battle_count(self, instance: str, hazard_level: int = None, delta: float = None):
+        """增加短猫有效战斗轮数
+
+        Args:
+            instance: 实例名称
+            hazard_level: 侵蚀等级，用于换算有效战斗轮数（2-3: 每轮2次, 4-6: 每轮3次）
+            delta: 直接指定增加的有效轮数，用于向后兼容。如果提供此参数，则忽略 hazard_level
+        """
+        # 根据侵蚀等级换算有效战斗轮数
+        # 侵蚀2-3: 每轮2次战斗 -> 有效轮数 = 战斗次数 / 2
+        # 侵蚀4-6: 每轮3次战斗 -> 有效轮数 = 战斗次数 / 3
+        if delta is not None:
+            # 直接使用 delta，保持向后兼容
+            pass
+        elif hazard_level is not None and hazard_level in [2, 3, 4, 5, 6]:
+            if hazard_level in [2, 3]:
+                delta = 0.5  # 2次战斗算1轮
+            else:  # 4, 5, 6
+                delta = 1 / 3  # 3次战斗算1轮
+        else:
+            delta = 1  # 默认直接加1
+
+        month = datetime.now().strftime('%Y-%m')
+        data = self.get_stats(instance, month)
+        data['meow_battle_count'] = data.get('meow_battle_count', 0) + delta
+        self.save_stats(instance, month, data)
+
+    def add_meow_round_time(self, instance: str, duration: float, hazard_level: int = None):
+        """记录短猫单轮战斗时间
+
+        Args:
+            instance: 实例名称
+            duration: 战斗耗时（秒）
+            hazard_level: 侵蚀等级，用于计算出击轮次（2-6）
+        """
+        # 验证 hazard_level 是否在有效范围内
+        if hazard_level is not None and hazard_level not in [2, 3, 4, 5, 6]:
+            logger.debug(f'Invalid hazard_level {hazard_level}, ignoring')
+            hazard_level = None
+
+        month = datetime.now().strftime('%Y-%m')
+        data = self.get_stats(instance, month)
+
+        if 'meow_round_times' not in data:
+            data['meow_round_times'] = []
+
+        times = data['meow_round_times']
+
+        # 迁移旧数据：将浮点数转换为字典格式
+        normalized_times = []
+        for entry in times:
+            if isinstance(entry, dict) and 'duration' in entry:
+                normalized_times.append(entry)
+            elif isinstance(entry, (int, float)):
+                # 旧格式：裸浮点数，转换为新格式
+                normalized_times.append({'duration': float(entry), 'hazard_level': None})
+
+        # 保存为字典，包含时长和侵蚀等级
+        new_entry = {
+            'duration': round(duration, 2),
+            'hazard_level': hazard_level
+        }
+        normalized_times.append(new_entry)
+
+        # 只保留最近100个样本
+        if len(normalized_times) > 100:
+            normalized_times = normalized_times[-100:]
+
+        data['meow_round_times'] = normalized_times
+        self.save_stats(instance, month, data)
+
+    def add_meow_battle_time(self, instance: str, duration: float):
+        """记录短猫单场战斗时间
+
+        Args:
+            instance: 实例名称
+            duration: 战斗耗时（秒）
+        """
+        month = datetime.now().strftime('%Y-%m')
+        data = self.get_stats(instance, month)
+
+        if 'meow_battle_times' not in data:
+            data['meow_battle_times'] = []
+
+        times = data['meow_battle_times']
+        times.append(round(duration, 2))
+
+        # 只保留最近100个样本
+        if len(times) > 100:
+            times = times[-100:]
+
+        data['meow_battle_times'] = times
+        self.save_stats(instance, month, data)
+
+    def get_meow_stats(self, instance: str, year: int = None, month: int = None) -> Dict[str, Any]:
+        """获取短猫统计数据
+
+        Args:
+            instance: 实例名称
+            year: 年份，默认当前年
+            month: 月份，默认当前月
+
+        Returns:
+            短猫统计数据字典
+        """
+        if year is None or month is None:
+            now = datetime.now()
+            year = now.year
+            month = now.month
+        key = f"{year:04d}-{month:02d}"
+
+        data = self.get_stats(instance, key)
+
+        battle_count = round(data.get('meow_battle_count', 0))
+        round_times = data.get('meow_round_times', [])
+        battle_times = data.get('meow_battle_times', [])
+
+        # 提取时长数据（兼容旧格式：浮点数和新格式：字典）
+        round_durations = []
+        for entry in round_times:
+            if isinstance(entry, dict) and 'duration' in entry:
+                round_durations.append(entry['duration'])
+            elif isinstance(entry, (int, float)):
+                # 兼容旧格式：裸浮点数
+                round_durations.append(float(entry))
+
+        # 计算平均每轮时间
+        avg_round_time = 0.0
+        if round_durations:
+            avg_round_time = round(sum(round_durations) / len(round_durations), 2)
+
+        # 计算平均单场战斗时间
+        avg_battle_time = 0.0
+        if battle_times:
+            avg_battle_time = round(sum(battle_times) / len(battle_times), 2)
+
+        return {
+            'month': key,
+            'battle_count': battle_count,
+            'round_times': round_times,
+            'avg_round_time': avg_round_time,
+            'battle_times': battle_times,
+            'avg_battle_time': avg_battle_time,
+        }
+
 
 # 单例实例
 db = Cl1Database()

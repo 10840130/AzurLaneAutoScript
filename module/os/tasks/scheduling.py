@@ -28,6 +28,9 @@ OpsiScheduling - 智能调度模块
 import re
 from datetime import datetime, timedelta
 
+# 短猫每轮消耗的行动力（以侵蚀5为标准）
+MEOW_ROUND_AP_COST = 30
+
 from module.logger import logger
 from module.os.map import OSMap
 from module.os.tasks.smart_scheduling_utils import is_smart_scheduling_enabled
@@ -639,6 +642,28 @@ class OpsiScheduling(CoinTaskMixin, OSMap):
             keys=self.CONFIG_PATH_CL1_MIN_AP_RESERVE
         ) or 200
         
+        # 检查是否启用月末行动力自动清理功能
+        meow_advance_enable = self.config.cross_get(
+            keys='OpsiScheduling.OpsiScheduling.MeowStartEarlyEnable'
+        ) or False
+        
+        if meow_advance_enable:
+            # 启用提前开始短猫功能，检查是否应该提前切换到短猫
+            should_meow, reason = self._should_start_meow_early(current_ap)
+            if should_meow:
+                logger.info(f'根据AP消耗速率分析: {reason}')
+                logger.info('切换到黄币补充任务（短猫）')
+                # 获取短猫相接的行动力保留值
+                meow_ap_preserve = self.config.cross_get(
+                    keys=self.CONFIG_PATH_MEOW_AP_PRESERVE
+                ) or 1000
+                
+                if current_ap >= meow_ap_preserve:
+                    self._switch_to_coin_task(yellow_coins, current_ap, cl1_preserve, meow_ap_preserve)
+                    return
+                else:
+                    logger.warning(f'行动力不足以执行短猫 ({current_ap} < {meow_ap_preserve})')
+        
         if current_ap < min_ap_reserve:
             logger.warning(f'行动力低于最低保留 ({current_ap} < {min_ap_reserve})')
             self._notify_ap_insufficient(current_ap, min_ap_reserve)
@@ -854,3 +879,228 @@ class OpsiScheduling(CoinTaskMixin, OSMap):
                 logger.warning(f"推送通知失败: {formatted_title}")
         except Exception as e:
             logger.error(f"推送通知异常: {e}")
+
+    # ========== 短猫提前开始计算 ==========
+
+    def _get_meow_monthly_cleanup_mode(self) -> str:
+        """获取月末行动力自动清理模式
+
+        Returns:
+            模式字符串: aggressive(激进), balanced(均衡), conservative(保守)
+        """
+        return self.config.cross_get(
+            keys='OpsiScheduling.OpsiScheduling.MeowStartEarlyMode'
+        ) or 'balanced'
+
+    def _should_start_meow_early(self, current_ap: int) -> tuple:
+        """判断是否应该提前开始短猫
+
+        Args:
+            current_ap: 当前行动力
+
+        Returns:
+            (是否应该开始, 原因说明)
+        """
+        try:
+            from module.statistics.cl1_database import db as cl1_db
+            instance_name = getattr(self.config, 'config_name', 'default')
+
+            # 获取短猫统计数据
+            stats = cl1_db.get_meow_stats(instance_name)
+            battle_count = stats.get('battle_count', 0)
+
+            # 如果没有足够数据，正常检查黄币
+            if battle_count < 5:
+                return (False, "数据不足")
+
+            # 获取模式
+            mode = self._get_meow_monthly_cleanup_mode()
+            multiplier_map = {
+                'aggressive': 0.8,
+                'balanced': 1.2,
+                'conservative': 1.5,
+            }
+            multiplier = multiplier_map.get(mode, 1.2)
+
+            # 每轮短猫消耗AP（固定30）
+            meow_round_ap = 30
+
+            # 计算当前AP可运行轮数
+            available_rounds = current_ap / meow_round_ap
+
+            # 获取平均每轮耗时
+            avg_round_time = stats.get('avg_round_time', 0)
+
+            # 计算需要的时间（小时）
+            if avg_round_time > 0:
+                base_hours = (available_rounds * avg_round_time) / 3600
+            else:
+                base_hours = 0
+
+            # 根据模式计算提前开始的小时数
+            advance_hours = base_hours * multiplier
+
+            if advance_hours <= 0:
+                # 行动力不足，应该开始
+                return (True, "行动力不足，需要现在开始短猫")
+
+            # 以“下个月大世界刷新时间”为基准，而不是每日服务器刷新时间
+            from datetime import datetime
+            from module.config.utils import get_os_next_reset
+
+            now = datetime.now()
+            next_reset = get_os_next_reset()
+            hours_to_reset = (next_reset - now).total_seconds() / 3600
+
+            # 如果距离大世界重置时间小于需要提前的时间，说明应该开始短猫了
+            if hours_to_reset < advance_hours:
+                reason = f"距离大世界重置还有{hours_to_reset:.1f}小时，需要提前{advance_hours:.1f}小时开始"
+                return (True, reason)
+
+            # 正常情况
+            return (False, f"距离大世界重置还有{hours_to_reset:.1f}小时，无需提前")
+
+        except Exception as e:
+            logger.debug(f"判断短猫提前开始失败: {e}")
+            return (False, f"计算失败: {e}")
+
+    # ==================== 短猫提前开始计算 ====================
+
+    def get_meow_advance_calculation(self) -> dict:
+        """
+        计算短猫提前开始时间建议
+
+        逻辑：当前行动力 / 30行动力 * 每轮短猫任务时间 = 需要提前开始的时间
+
+        Returns:
+            包含计算结果的字典:
+            - mode: 当前模式 (aggressive/balanced/conservative)
+            - multiplier: 时间倍数
+            - current_ap: 当前行动力
+            - meow_round_ap: 每轮短猫消耗AP (固定30)
+            - avg_meow_round_time: 平均每轮短猫耗时(秒)
+            - available_rounds: 当前AP可运行轮数
+            - hours_ahead: 建议提前小时数
+            - start_cleanup_time: 建议开始清理时间（格式: MM-DD HH:MM）
+            - next_os_reset_time: 下次大世界重置时间（格式: MM-DD HH:MM）
+            - recommendation: 建议文本
+        """
+        from module.config.utils import get_os_next_reset
+
+        # 获取当前模式
+        mode = self.config.cross_get(
+            keys='OpsiScheduling.OpsiScheduling.MeowStartEarlyMode'
+        ) or 'balanced'
+
+        # 模式对应的提前倍数
+        multiplier_map = {
+            'aggressive': 0.8,   # 激进模式：提前80%
+            'balanced': 1.2,     # 均衡模式：提前120%
+            'conservative': 1.5,  # 保守模式：提前150%
+        }
+        multiplier = multiplier_map.get(mode, 1.2)
+
+        # 每轮短猫消耗的AP（固定30）
+        meow_round_ap = MEOW_ROUND_AP_COST
+
+        # 获取当前行动力：优先实时读取，失败时回退到数据库快照
+        current_ap = 0
+        ap_source = 'none'
+        try:
+            current_ap = int(self.get_action_point())
+            ap_source = 'realtime'
+        except Exception:
+            try:
+                from module.statistics.opsi_month import get_ap_timeline
+                instance_name = getattr(self.config, 'config_name', 'default')
+                ap_timeline = get_ap_timeline(instance_name=instance_name)
+                if ap_timeline:
+                    current_ap = int(ap_timeline[-1].get('ap', 0) or 0)
+                    ap_source = 'snapshot'
+            except Exception:
+                current_ap = 0
+                ap_source = 'none'
+
+        # 获取平均每轮短猫耗时
+        try:
+            from module.statistics.cl1_database import db as cl1_db
+            instance_name = getattr(self.config, 'config_name', 'default')
+            meow_data = cl1_db.get_meow_stats(instance_name)
+            avg_meow_round_time = meow_data.get('avg_round_time', 0)  # 秒
+        except Exception:
+            avg_meow_round_time = 0
+
+        # 计算当前AP可运行轮数
+        if meow_round_ap > 0:
+            available_rounds = current_ap / meow_round_ap
+        else:
+            available_rounds = 0
+
+        # 计算需要提前的小时数
+        # 每轮耗时转换为小时
+        if avg_meow_round_time > 0:
+            base_hours_ahead = (available_rounds * avg_meow_round_time) / 3600
+        else:
+            base_hours_ahead = 0
+
+        # 根据模式计算提前开始的小时数
+        advance_hours = base_hours_ahead * multiplier
+
+        # 限制最小和最大值
+        advance_hours = max(0, min(advance_hours, 168))  # 最多提前7天
+
+        # 计算建议开始清理时间（以大世界下次重置时间为基准）
+        now = datetime.now()
+        try:
+            next_reset = get_os_next_reset()
+            start_cleanup_dt = next_reset - timedelta(hours=advance_hours)
+            if start_cleanup_dt < now:
+                start_cleanup_dt = now
+            start_cleanup_time = start_cleanup_dt.strftime('%m-%d %H:%M')
+            next_os_reset_time = next_reset.strftime('%m-%d %H:%M')
+        except Exception:
+            start_cleanup_time = '-'
+            next_os_reset_time = '-'
+
+        # 模式名称映射
+        mode_names = {
+            'aggressive': '激进',
+            'balanced': '均衡',
+            'conservative': '保守',
+        }
+
+        # 生成建议文本
+        if avg_meow_round_time == 0:
+            recommendation = "数据不足，无法计算建议"
+        elif current_ap < meow_round_ap:
+            recommendation = "行动力不足一轮短猫消耗"
+        else:
+            recommendation = (
+                f"当前AP {current_ap} 可运行 {available_rounds:.1f} 轮短猫，"
+                f"约 {base_hours_ahead:.1f} 小时"
+                f"{'，建议提前开始' if advance_hours > 24 else ''}"
+            )
+
+        if ap_source == 'snapshot':
+            recommendation = f"{recommendation}（AP来自最近快照）"
+        elif ap_source == 'none':
+            recommendation = f"{recommendation}（未获取到AP，按0计算）"
+
+        if start_cleanup_time != '-' and next_os_reset_time != '-':
+            recommendation = (
+                f"{recommendation}；建议开始清理时间：{start_cleanup_time}（下次大世界重置：{next_os_reset_time}）"
+            )
+
+        return {
+            'mode': mode,
+            'mode_name': mode_names.get(mode, '均衡'),
+            'multiplier': multiplier,
+            'current_ap': current_ap,
+            'meow_round_ap': meow_round_ap,
+            'avg_meow_round_time': round(avg_meow_round_time, 1) if avg_meow_round_time else 0,
+            'available_rounds': round(available_rounds, 1),
+            'hours_ahead': round(advance_hours, 1),
+            'start_cleanup_time': start_cleanup_time,
+            'next_os_reset_time': next_os_reset_time,
+            'recommendation': recommendation,
+        }
