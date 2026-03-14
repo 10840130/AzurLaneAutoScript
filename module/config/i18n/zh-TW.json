@@ -70,6 +70,10 @@
       "name": "三油低耗",
       "help": "使用三油低耗陣容進行戰鬥，在旗艦達到32級時自動更換旗艦並退役。"
     },
+    "Ambush11": {
+      "name": "1-1刷伏擊(尚不完善)",
+      "help": "在1-1不打boss刷伏擊獲得物資等，支援按緊急委託流程自動換船。"
+    },
     "EventGeneral": {
       "name": "活動通用",
       "help": ""
@@ -1008,8 +1012,8 @@
       "help": ""
     },
     "UseRecommendFleet": {
-      "name": "Campaign.UseRecommendFleet.name",
-      "help": "Campaign.UseRecommendFleet.help"
+      "name": "自動配隊",
+      "help": "使用遊戲內建的推薦陣容自動完成困難圖配隊"
     }
   },
   "StopCondition": {
@@ -4565,6 +4569,12 @@
       "name": "指定裝置格子（實驗性）",
       "help": "指定塞壬研究裝置在地圖中的格子，若為空則執行掃圖尋找。\n格子格式為一個大寫字母代表列號加一個阿拉伯數字代表行號，如「B10」代表第二列第十行。\n地圖左上角格子為第一列第一行，即「A1」，往右一格列數加一，往下一格行數加一。"
     },
+    "SirenBug_SyncDailyCount": {
+      "name": "同步每日利用次數",
+      "help": "同步每日已利用塞壬研究裝置 Bug 的次數",
+      "True": "是",
+      "False": "否"
+    },
     "DisableTaskSwitchDuringBug": {
       "name": "Bug 利用期間禁止任務切換（實驗性）",
       "help": "實驗性功能。\nBug 利用期間暫時停用調度器的任務切換檢查，避免被委託、日常等任務打斷。\n若 Bug 利用過程中經常被其他到時任務中斷，可以啟用此選項。",
@@ -4656,6 +4666,17 @@
       "help": "智能調度中是否啟用塞壬要塞任務來補充黃幣。",
       "True": "已啟用",
       "False": "未啟用"
+    },
+    "MeowStartEarlyMode": {
+      "name": "月末行動力自動清理模式",
+      "help": "提前小時數 = (當前行動力/30 × 歷史平均每輪短貓耗時) × 模式係數，並與「下個月大世界重置剩餘時間」比較；激進(×0.8)少提前，均衡(×1.2)平衡，保守(×1.5)多提前",
+      "aggressive": "激進模式",
+      "balanced": "均衡模式",
+      "conservative": "保守模式"
+    },
+    "MeowStartEarlyEnable": {
+      "name": "啟用月末行動力自動清理",
+      "help": "根據歷史短貓耗時與當前行動力，自動判斷是否需要提前開始短貓來清理月末過剩行動力；判斷基準為「下個月大世界重置時間」，並非每日伺服器刷新時間"
     }
   },
   "OpsiDailyDelay": {
@@ -4882,7 +4903,8 @@
       "CheckUpdate": "檢查更新",
       "ClickToUpdate": "進行更新",
       "RetryUpdate": "重試更新",
-      "CancelUpdate": "取消更新"
+      "CancelUpdate": "取消更新",
+      "Open": "開啟"
     },
     "Toast": {
       "DisableTranslateMode": "點擊這裡關閉翻譯模式",
@@ -4934,7 +4956,8 @@
       "Running": "執行中",
       "Pending": "佇列中",
       "Waiting": "等待中",
-      "NoTask": "無任務"
+      "NoTask": "無任務",
+      "Stat": "統計介面"
     },
     "Dashboard": {
       "TimeError": "時間錯誤",
@@ -5024,14 +5047,16 @@
       "ChooseFile": "選擇檔案"
     },
     "OpsiScheduling": {
-      "UseSmartSchedulingOperationCoinsPreserve": "Gui.OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve",
-      "OperationCoinsPreserve": "Gui.OpsiScheduling.OperationCoinsPreserve",
-      "ActionPointPreserve": "Gui.OpsiScheduling.ActionPointPreserve",
-      "OperationCoinsReturnThreshold": "Gui.OpsiScheduling.OperationCoinsReturnThreshold",
-      "EnableMeowfficerFarming": "Gui.OpsiScheduling.EnableMeowfficerFarming",
-      "EnableObscure": "Gui.OpsiScheduling.EnableObscure",
-      "EnableAbyssal": "Gui.OpsiScheduling.EnableAbyssal",
-      "EnableStronghold": "Gui.OpsiScheduling.EnableStronghold"
+      "UseSmartSchedulingOperationCoinsPreserve": "獲取 X 個作戰補給憑證",
+      "OperationCoinsPreserve": "侵蝕1練級 保留 X 個作戰補給憑證",
+      "ActionPointPreserve": "短貓相接 保留 X 點行動力",
+      "OperationCoinsReturnThreshold": "獲取 X 個作戰補給憑證",
+      "EnableMeowfficerFarming": "啟用短貓相接",
+      "EnableObscure": "啟用隱秘海域",
+      "EnableAbyssal": "啟用深淵海域",
+      "EnableStronghold": "啟用塞壬要塞",
+      "MeowStartEarlyMode": "月末行動力自動清理模式",
+      "MeowStartEarlyEnable": "啟用月末行動力自動清理"
     }
   }
 }
