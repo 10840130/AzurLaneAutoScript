@@ -1287,9 +1287,27 @@ EmulatorManagement:
     validate: [1, 24]
 OpsiSimulatorParameters:
   Samples: 1000
+  Draw:
+    value: do_not
+    option: [do_not, single_sample, multi_sample]
   TotalTime: 0
   TimeUseRatio:
     value: 0.8
     validate: [0, 1]
   InitialAp: 0
   InitialCoin: 0
+  MeowHazardLevel:
+    value: level5
+    option:
+      level3: 3
+      level5: 5
+  CrossWeek: true
+  BuyAp: true
+  Cl1Coin: 170
+  Meow3Coin: 750
+  Meow5Coin: 1700
+  AkashiProbability: 0.05
+  Cl1Time: 0
+  Meow3Time: 0
+  Meow5Time: 0
+  Deterministic: false

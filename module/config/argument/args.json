@@ -2679,7 +2679,8 @@
           "combat_auto",
           "combat_manual",
           "stand_still_in_the_middle",
-          "hide_in_bottom_left"
+          "hide_in_bottom_left",
+          "hide_in_upper_left"
         ]
       },
       "Fleet1Step": {
@@ -2721,7 +2722,8 @@
           "combat_auto",
           "combat_manual",
           "stand_still_in_the_middle",
-          "hide_in_bottom_left"
+          "hide_in_bottom_left",
+          "hide_in_upper_left"
         ]
       },
       "Fleet2Step": {
@@ -3133,7 +3135,8 @@
           "combat_auto",
           "combat_manual",
           "stand_still_in_the_middle",
-          "hide_in_bottom_left"
+          "hide_in_bottom_left",
+          "hide_in_upper_left"
         ]
       },
       "Fleet1Step": {
@@ -3175,7 +3178,8 @@
           "combat_auto",
           "combat_manual",
           "stand_still_in_the_middle",
-          "hide_in_bottom_left"
+          "hide_in_bottom_left",
+          "hide_in_upper_left"
         ]
       },
       "Fleet2Step": {
@@ -4648,7 +4652,8 @@
           "combat_auto",
           "combat_manual",
           "stand_still_in_the_middle",
-          "hide_in_bottom_left"
+          "hide_in_bottom_left",
+          "hide_in_upper_left"
         ]
       },
       "Fleet1Step": {
@@ -4693,7 +4698,8 @@
           "combat_auto",
           "combat_manual",
           "stand_still_in_the_middle",
-          "hide_in_bottom_left"
+          "hide_in_bottom_left",
+          "hide_in_upper_left"
         ],
         "display": "hide"
       },
@@ -13635,6 +13641,15 @@
         "type": "input",
         "value": 1000
       },
+      "Draw": {
+        "type": "select",
+        "value": "do_not",
+        "option": [
+          "do_not",
+          "single_sample",
+          "multi_sample"
+        ]
+      },
       "TotalTime": {
         "type": "input",
         "value": 0
@@ -13654,6 +13669,54 @@
       "InitialCoin": {
         "type": "input",
         "value": 0
+      },
+      "MeowHazardLevel": {
+        "type": "select",
+        "value": "level5",
+        "option": {
+          "level3": 3,
+          "level5": 5
+        }
+      },
+      "CrossWeek": {
+        "type": "checkbox",
+        "value": true
+      },
+      "BuyAp": {
+        "type": "checkbox",
+        "value": true
+      },
+      "Cl1Coin": {
+        "type": "input",
+        "value": 170
+      },
+      "Meow3Coin": {
+        "type": "input",
+        "value": 750
+      },
+      "Meow5Coin": {
+        "type": "input",
+        "value": 1700
+      },
+      "AkashiProbability": {
+        "type": "input",
+        "value": 0.05
+      },
+      "Cl1Time": {
+        "type": "input",
+        "value": 0
+      },
+      "Meow3Time": {
+        "type": "input",
+        "value": 0
+      },
+      "Meow5Time": {
+        "type": "input",
+        "value": 0
+      },
+      "Deterministic": {
+        "type": "checkbox",
+        "value": false
       }
     },
     "Storage": {

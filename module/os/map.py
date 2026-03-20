@@ -817,6 +817,13 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
                     hazard_level = self.zone.hazard_level
             except Exception:
                 logger.debug('Failed to get hazard level for battle count')
+            if hazard_level not in [2, 3, 4, 5, 6]:
+                try:
+                    hazard_level = self.config.cross_get(
+                        keys='OpsiMeowfficerFarming.OpsiMeowfficerFarming.HazardLevel'
+                    )
+                except Exception:
+                    hazard_level = None
 
             try:
                 try:
@@ -932,6 +939,13 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
             instance_name = getattr(self.config, 'config_name', 'default')
             # 获取侵蚀等级用于计算出击轮次
             hazard_level = getattr(getattr(self, 'zone', None), 'hazard_level', None)
+            if hazard_level not in [2, 3, 4, 5, 6]:
+                try:
+                    hazard_level = self.config.cross_get(
+                        keys='OpsiMeowfficerFarming.OpsiMeowfficerFarming.HazardLevel'
+                    )
+                except Exception:
+                    hazard_level = None
             cl1_db.add_meow_round_time(instance_name, duration, hazard_level)
         except Exception:
             logger.debug('Failed to record meow search duration', exc_info=True)
@@ -998,9 +1012,8 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
         for _ in self.loop():
             # End
             if not unlock_checked and unlock_check_timer.reached():
-                logger.critical('Unable to use auto search in current zone')
-                logger.critical('Please finish the story mode of OpSi to unlock auto search '
-                                'before using any OpSi functions')
+                logger.critical('无法在当前区域使用自动搜索')
+                logger.critical('请先完成大世界剧情以解锁自动搜索功能，然后再使用任何大世界功能')
                 raise RequestHumanTakeover
             if self.is_in_map():
                 self.device.stuck_record_clear()
@@ -1100,9 +1113,8 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
         for _ in self.loop():
             # End
             if not unlock_checked and unlock_check_timer.reached():
-                logger.critical('Unable to use auto search in current zone')
-                logger.critical('Please finish the story mode of OpSi to unlock auto search '
-                                'before using any OpSi functions')
+                logger.critical('无法在当前区域使用自动搜索')
+                logger.critical('请先完成大世界剧情以解锁自动搜索功能，然后再使用任何大世界功能')
                 raise RequestHumanTakeover
             if self.is_in_map():
                 self.device.stuck_record_clear()
@@ -2044,6 +2056,8 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
         # 由上层任务循环重新拉起，不在此处继续兜底推进。
         source_zone = self.name_to_zone(current_zone_id)
         
+        force_reward = False
+
         logger.hr('塞壬研究装置 BUG 利用流程')
         
         try:
@@ -2073,6 +2087,7 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
                     time.sleep(count)
 
                 target_grid = self.config.cross_get(keys=f"{task}.OpsiSirenBug.SirenBug_Grid", default=None)
+                device_found = False
                 device_handled = False
 
                 if target_grid:
@@ -2106,6 +2121,7 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
                             find_device_timer = Timer(30, count=1).start()
                             while not find_device_timer.reached() and not device_handled:
                                 if self._handle_siren_bug_device(grid):
+                                    device_found = True
                                     device_handled = True
                                     break
                                 
@@ -2149,6 +2165,7 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
                         if grids and grids[0].is_scanning_device and 'is_scanning_device' not in self._solved_map_event:
                             grid = grids[0]
                             logger.info(f'找到塞壬研究装置: {grid}')
+                            device_found = True
 
                             if self._handle_siren_bug_device(grid):
                                 device_handled = True
@@ -2165,13 +2182,17 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
                         time.sleep(0.5)
 
                     if not device_handled:
-                        logger.warning(f'区域{siren_bug_zone}未找到塞壬研究装置，跳过后续操作')
+                        if not device_found:
+                            logger.warning(f'区域{siren_bug_zone}未找到塞壬研究装置，跳过后续操作')
 
-                        # 没找到吊机自动关闭bug利用
-                        if self.config.cross_get(keys=f"{task}.OpsiSirenBug.SirenBug_AutoDisable", default=False):
-                            self.config.cross_set(keys=f"{task}.OpsiSirenBug.SirenBug_Enable", value=False)
+                            # 没找到吊机自动关闭bug利用
+                            if self.config.cross_get(keys=f"{task}.OpsiSirenBug.SirenBug_AutoDisable", default=False):
+                                self.config.cross_set(keys=f"{task}.OpsiSirenBug.SirenBug_Enable", value=False)
 
-                        raise RuntimeError('未找到塞壬研究装置')
+                            raise RuntimeError('未找到塞壬研究装置')
+                        else:
+                            logger.warning(f'找到塞壬研究装置但无法进入剧情，执行自动收菜（如果配置了自动收菜）')
+                            force_reward = True
 
             # Increase bug count
             count += 1
@@ -2191,7 +2212,7 @@ class OSMap(OSFleet, Map, GlobeCamera, StorageHandler, StrategicSearchHandler):
                 logger.debug(f'发送成功通知失败: {notify_err}')
             
             count_limit = self.config.cross_get(keys=f"{task}.OpsiSirenBug.SirenBug_CountLimit", default=0)
-            if count_limit > 0 and count >= count_limit:
+            if count_limit > 0 and (count >= count_limit or force_reward):
                 logger.info(f'已达到塞壬Bug自动处理阈值 ({count_limit}次)，开始自动收菜')
                 # 禁用塞壬研究装置的处理
                 self.config._disable_siren_research = True
